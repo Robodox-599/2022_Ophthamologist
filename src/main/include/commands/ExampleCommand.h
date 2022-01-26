@@ -25,6 +25,14 @@ class ExampleCommand
    * @param subsystem The subsystem used by this command.
    */
   explicit ExampleCommand(ExampleSubsystem* subsystem);
+  
+void Initialize() override;
+
+void Execute() override;
+
+void End(bool interrupted) override;
+
+bool IsFinished() override;
 
  private:
   ExampleSubsystem* m_subsystem;
