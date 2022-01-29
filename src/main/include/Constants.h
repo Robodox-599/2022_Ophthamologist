@@ -13,19 +13,6 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
-namespace DriveConstants
-{
-    constexpr int frontLeftMotorPort = 2;
-    constexpr int rearLeftMotorPort = 1;
-    constexpr int frontRightMotorPort = 3;
-    constexpr int rearRightMotorPort = 4;
-
-    constexpr int leftEncoderPort = 1;
-    constexpr int rightEncoderPort = 3;
-
-    constexpr int pigeonPort = 0;
-}
-
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
@@ -48,4 +35,24 @@ namespace ControllerConstants
     constexpr int xboxMenu = 8;
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
+}
+namespace ArmConstants
+{
+    constexpr int ArmMotorPort = 7;
+    
+
+    constexpr double ArmEncoderMax = 0;
+    constexpr double ArmEncoderMin = 0;
+    constexpr double ArmEncoderLimitPercent = 10;
+
+    constexpr double Arm_kF = 0;
+    constexpr double Arm_kP = 0.1;
+    constexpr double Arm_kI = 0;
+    constexpr double Arm_kD = 0;
+
+    constexpr int ArmVelocity = 280;
+    constexpr int ArmAcceleration = 100;  
+
+    constexpr int ArmTicksUp = 50000;
+    constexpr int ArmTicksDown = 0;  
 }
