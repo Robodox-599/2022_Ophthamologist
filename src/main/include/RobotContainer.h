@@ -6,8 +6,13 @@
 
 #include <frc2/command/Command.h>
 
-#include "commands/ExampleCommand.h"
-#include "subsystems/ExampleSubsystem.h"
+#include "commands/command_ShooterFeedIn.h"
+#include "commands/command_ShooterFeedOut.h"
+#include "subsystems/subsystem_Shooter.h"
+
+#include "frc/XboxController.h"
+#include "frc2/command/button/JoystickButton.h"
+#include "Constants.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -24,8 +29,9 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
-  ExampleSubsystem m_subsystem;
-  ExampleCommand m_autonomousCommand;
+  subsystem_Shooter m_shooter;
+
+  frc::XboxController xbox{ControllerConstants::xboxPort};
 
   void ConfigureButtonBindings();
 };
