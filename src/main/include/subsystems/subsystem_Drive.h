@@ -8,6 +8,10 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
+<<<<<<< HEAD
+=======
+#include "ctre/Phoenix.h"
+>>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
 #include "rev/CANSparkMax.h"
 #include "Constants.h"
 
@@ -20,10 +24,13 @@ class subsystem_Drive : public frc2::SubsystemBase {
   void JoystickPowerDrive(double x, double y);
   void DriveDistance(int inches);
   double GetPIDError(int inches);
+<<<<<<< HEAD
   double Skim(double input);
   void TurnByDegrees(int degrees);
   void DriveByPower(double turn, double throttle);
 
+=======
+>>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
 
 
   /**

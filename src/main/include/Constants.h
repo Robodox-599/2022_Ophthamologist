@@ -24,9 +24,12 @@ namespace DriveConstants
     constexpr int rightEncoderPort = 3;
 
     constexpr int pigeonPort = 0;
+<<<<<<< HEAD
 
     constexpr double skimGain = 0.0;
     constexpr double turnGain = 0.0;
+=======
+>>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
 }
 
 namespace ControllerConstants
@@ -52,4 +55,7 @@ namespace ControllerConstants
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3

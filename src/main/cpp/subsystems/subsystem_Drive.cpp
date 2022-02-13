@@ -56,9 +56,12 @@ double subsystem_Drive::GetPIDError(int inches)
 
 int subsystem_Drive::ConvertInchesToRotations(int inches)
 {
+<<<<<<< HEAD
 
   //WHEEL AND GEAR RATIO NEED TO BE FOUND OUT BEFORE THIS METHOD CAN BE USED 
   //VALUES ARE FROM PREVIOUS YEARS CODE
+=======
+>>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
   double wheelDiameter = 6;
   double gearRatio = 10.45;
 
@@ -103,6 +106,7 @@ void subsystem_Drive::JoystickPowerDrive(double x, double y)
   m_rearRightMotor.Set(r);
 }
 
+<<<<<<< HEAD
 double subsystem_Drive::Skim(double input){
   if(input > 1.0){
     return -1 * ( (input -1.0) * DriveConstants::skimGain );
@@ -139,5 +143,7 @@ void subsystem_Drive::TurnByDegrees(int degrees){
 
 
 
+=======
+>>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
 // This method will be called once per scheduler run
 void subsystem_Drive::Periodic() {}
