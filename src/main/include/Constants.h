@@ -8,13 +8,23 @@
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
  * purpose.
- *
+ * 
  * It is generally a good idea to place constants into subsystem- or
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
-<<<<<<< HEAD
-=======
+
+namespace ShooterConstants
+{
+    constexpr int intakeMotorPort = 2;
+    constexpr double shooterkF = 0;
+    constexpr double shooterkP = 0;
+    constexpr double shooterkD = 0;
+    constexpr double shooterFeedInPower = 0.3;
+    constexpr double shooterFeedOutPower = -0.3;
+}
+
+
 namespace DriveConstants
 {
     constexpr int frontLeftMotorPort = 2;
@@ -26,18 +36,15 @@ namespace DriveConstants
     constexpr int rightEncoderPort = 3;
 
     constexpr int pigeonPort = 0;
-<<<<<<< HEAD
 
     constexpr double skimGain = 0.0;
     constexpr double turnGain = 0.0;
-=======
->>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
 }
 
->>>>>>> origin/auton
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
+    constexpr int joystickPort = 1;
 
     constexpr int xboxLXAxis = 0;
     constexpr int xboxLYAxis = 1;
@@ -57,8 +64,17 @@ namespace ControllerConstants
     constexpr int xboxMenu = 8;
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
+
+    constexpr int atk3ArmUp = 6;
+    constexpr int atk3ArmDown = 4;
+    constexpr int atk3WinchUnlock = 7;
+    constexpr int atk3WinchUp = 10;
+    constexpr int atk3WinchDown = 11;
+    constexpr int atk3TraverseLeft = 8 ;
+    constexpr int atk3TraverseRight = 9;
 }
-<<<<<<< HEAD
+
+
 namespace ArmConstants
 {
     constexpr int ArmMotorPort = 7;
@@ -79,9 +95,4 @@ namespace ArmConstants
     constexpr int ArmTicksUp = 50000;
     constexpr int ArmTicksDown = 0;  
 }
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
->>>>>>> origin/auton
