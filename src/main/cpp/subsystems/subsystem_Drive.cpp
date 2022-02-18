@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/subsystem_Drive.h"
-#include "Constants.h"
+
 
 subsystem_Drive::subsystem_Drive() :
   m_frontLeftMotor{DriveConstants::frontLeftMotorPort, rev::CANSparkMax::MotorType::kBrushless},
@@ -14,9 +14,9 @@ subsystem_Drive::subsystem_Drive() :
   m_rearLeftMotor{DriveConstants::rearLeftMotorPort, rev::CANSparkMax::MotorType::kBrushless},
   m_rearRightMotor{DriveConstants::rearRightMotorPort, rev::CANSparkMax::MotorType::kBrushless}
 {
-  m_frontLeftMotor.SetInverted(false);
+  m_frontLeftMotor.SetInverted(true);
   m_frontRightMotor.SetInverted(true);
-  m_rearLeftMotor.SetInverted(false);
+  m_rearLeftMotor.SetInverted(true);
   m_rearRightMotor.SetInverted(true);
 
   // m_rearLeftMotor.Follow(m_frontLeftMotor);
@@ -56,8 +56,11 @@ double subsystem_Drive::GetPIDError(int inches)
 
 int subsystem_Drive::ConvertInchesToRotations(int inches)
 {
-  double wheelDiameter = 6;
-  double gearRatio = 10.45;
+
+  //WHEEL AND GEAR RATIO NEED TO BE FOUND OUT BEFORE THIS METHOD CAN BE USED 
+  //VALUES ARE FROM PREVIOUS YEARS CODE
+  double wheelDiameter = 4;
+  double gearRatio = 7.74;
 
   return ((inches)/(wheelDiameter*3.14))*gearRatio;
 }
@@ -78,11 +81,14 @@ void subsystem_Drive::JoystickPowerDrive(double x, double y)
   {
     y = 0;
   }
+
+  
   if (x > 0.2)
   {
     x = (x - 0.2) * 1 / .8;
   }
   else if (x < -0.2)
+
   {
     x = (x + 0.2) * 1 / .8;
   }
@@ -99,6 +105,61 @@ void subsystem_Drive::JoystickPowerDrive(double x, double y)
   m_frontRightMotor.Set(r);
   m_rearRightMotor.Set(r);
 }
+
+double subsystem_Drive::Skim(double input){
+  if(input > 1.0){
+    return -1 * ( (input -1.0) * DriveConstants::skimGain );
+  } else if ( input < -1.0){
+    return -1 * ( (input + 1.0) * DriveConstants::skimGain );
+  }
+  return 0;
+}
+
+void subsystem_Drive::DriveByPower(double turn, double throttle){
+
+  if (throttle > .2){
+    turn = turn * (DriveConstants::turnGain * fabs(throttle));
+  }
+  
+  double left = throttle + turn;
+  double right = throttle - turn;
+
+  double leftMotorOutput = left + Skim(right);
+  double rightMotorOutput = right + Skim(left);
+
+   m_frontLeftMotor.Set(leftMotorOutput);
+   m_rearLeftMotor.Set(leftMotorOutput);
+   m_frontRightMotor.Set(rightMotorOutput);
+   m_rearRightMotor.Set(rightMotorOutput);
+  
+}
+
+void subsystem_Drive::JoystickDrive(double x, double y){
+  if (y > 0.2) {y = pow( (y - 0.2) * 1 / .8, 2);}
+  else if (y <-0.2) {y = -1* pow( (y + 0.2) * 1 / .8, 2);}
+  else{y = 0;}
+  
+  if (x > 0.2) {x = pow( (x - 0.2) * 1 / .8, 2);}
+  else if (x < -0.2) {x = -1 * pow( (x + 0.2) * 1 / .8, 2);}
+  else{x = 0;}
+
+  DriveByPower(x, y);
+
+}
+/*positive values are clockwise and negative values are counterclockwise*/
+void subsystem_Drive::TurnByDegrees(int degrees){
+  //0.0 is a place holder for the distance traveled by the wheels when making a full 360 degree turn
+  double inches = degrees * (0.0 / 360.0);
+  SetPositionControl();
+  m_leftPidController.SetReference(ConvertInchesToRotations(inches), rev::ControlType::kPosition);
+  m_rightPidController.SetReference(-1 * ConvertInchesToRotations(inches), rev::ControlType::kPosition);
+}
+
+
+
+
+
+
 
 // This method will be called once per scheduler run
 void subsystem_Drive::Periodic() {}

@@ -16,7 +16,6 @@ command_DriveByDistance::command_DriveByDistance(subsystem_Drive *theDrive, int 
 // Called when the command is initially scheduled.
 void command_DriveByDistance::Initialize() {
   m_subsystem_Drive->DriveDistance(m_inches);
-  printf("B");
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -24,14 +23,11 @@ void command_DriveByDistance::Execute() {
   if (fabs(m_subsystem_Drive->GetPIDError(m_inches)) < m_errorWindow)
   {
     m_errorWindowCount++;
-    printf("_2");
   }
   else
   {
     m_errorWindowCount = 0;
-    printf("_4");
   }
-  printf("_3");
 }
 
 // Called once the command ends or is interrupted.

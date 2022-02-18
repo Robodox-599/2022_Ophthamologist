@@ -7,8 +7,9 @@
 
 #pragma once
 
+#include <math.h>
+#include "Constants.h"
 #include <frc2/command/SubsystemBase.h>
-#include "ctre/Phoenix.h"
 #include "rev/CANSparkMax.h"
 #include "Constants.h"
 
@@ -21,12 +22,18 @@ class subsystem_Drive : public frc2::SubsystemBase {
   void JoystickPowerDrive(double x, double y);
   void DriveDistance(int inches);
   double GetPIDError(int inches);
+  double Skim(double input);
+  void TurnByDegrees(int degrees);
+  void DriveByPower(double turn, double throttle);
+  void JoystickDrive(double x, double y);
 
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic();
+  void SetPositionControl();
+  int ConvertInchesToRotations(int inches);
 
 
  private:
@@ -44,6 +51,5 @@ class subsystem_Drive : public frc2::SubsystemBase {
   rev::SparkMaxPIDController m_rightPidController = m_frontRightMotor.GetPIDController();
 
 
-  void SetPositionControl();
-  int ConvertInchesToRotations(int inches);
+  
 };

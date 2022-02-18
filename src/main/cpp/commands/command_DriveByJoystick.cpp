@@ -16,7 +16,7 @@ command_DriveByJoystick::command_DriveByJoystick(subsystem_Drive *theDrive, std:
 // Called when the command is initially scheduled.
 void command_DriveByJoystick::Initialize() {}
 
-// Called repeatedly when this Command is scheduled to run
+// Called repeatedly when this Command is sch.eduled to run
 void command_DriveByJoystick::Execute() {
   m_subsystem_Drive->JoystickPowerDrive((0.8*m_xAxis()), (0.8*m_yAxis()));
 }

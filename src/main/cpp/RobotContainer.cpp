@@ -1,3 +1,4 @@
+
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
@@ -6,7 +7,8 @@
 
 
 RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
-  // Initialize all of your commands and subsystems here
+  
+   //Initialize all of your commands and subsystems here
 
   m_drive.SetDefaultCommand(command_DriveByJoystick(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);},
   [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
@@ -22,8 +24,7 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton xboxY(&xbox, ControllerConstants::xboxY);
   frc2::JoystickButton xboxRB(&xbox, ControllerConstants::xboxRB);
   frc2::JoystickButton xboxLB(&xbox, ControllerConstants::xboxLB);
-  xboxA.WhenPressed(ExampleCommand(&m_subsystem));
-  xboxB.WhenPressed(command_DriveByDistance(&m_drive, 50));
+
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
