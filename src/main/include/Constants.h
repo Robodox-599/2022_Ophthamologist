@@ -13,14 +13,32 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+
 namespace ShooterConstants
 {
     constexpr int intakeMotorPort = 2;
-    constexpr double shooterkF = 0.0165;
-    constexpr double shooterkP = 0.12;
-    constexpr double shooterkD = 1;
+    constexpr double shooterkF = 0;
+    constexpr double shooterkP = 0;
+    constexpr double shooterkD = 0;
     constexpr double shooterFeedInPower = 0.3;
     constexpr double shooterFeedOutPower = -0.3;
+}
+
+
+namespace DriveConstants
+{
+    constexpr int frontLeftMotorPort = 2;
+    constexpr int rearLeftMotorPort = 1;
+    constexpr int frontRightMotorPort = 3;
+    constexpr int rearRightMotorPort = 4;
+
+    constexpr int leftEncoderPort = 1;
+    constexpr int rightEncoderPort = 3;
+
+    constexpr int pigeonPort = 0;
+
+    constexpr double skimGain = 0.0;
+    constexpr double turnGain = 0.0;
 }
 
 namespace ControllerConstants
@@ -54,5 +72,27 @@ namespace ControllerConstants
     constexpr int atk3WinchDown = 11;
     constexpr int atk3TraverseLeft = 8 ;
     constexpr int atk3TraverseRight = 9;
+}
+
+
+namespace ArmConstants
+{
+    constexpr int ArmMotorPort = 7;
+    
+
+    constexpr double ArmEncoderMax = 0;
+    constexpr double ArmEncoderMin = 0;
+    constexpr double ArmEncoderLimitPercent = 10;
+
+    constexpr double Arm_kF = 0;
+    constexpr double Arm_kP = 0.1;
+    constexpr double Arm_kI = 0;
+    constexpr double Arm_kD = 0;
+
+    constexpr int ArmVelocity = 280;
+    constexpr int ArmAcceleration = 100;  
+
+    constexpr int ArmTicksUp = 50000;
+    constexpr int ArmTicksDown = 0;  
 }
 

@@ -14,6 +14,14 @@
 #include "frc2/command/button/JoystickButton.h"
 #include "Constants.h"
 
+#include "subsystems/subsystem_Arm.h"
+#include "commands/command_ArmByPositionDown.h"
+#include "commands/command_ArmByPositionUp.h"
+
+#include "frc/XboxController.h"
+#include "frc2/command/button/JoystickButton.h"
+#include "Constants.h"
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -32,6 +40,10 @@ class RobotContainer {
   subsystem_Shooter m_shooter;
 
   frc::XboxController xbox{ControllerConstants::xboxPort};
+  ExampleSubsystem m_subsystem;
+  ExampleCommand m_autonomousCommand;
+  subsystem_Arm m_Arm;
 
+  frc::XboxController xbox{ControllerConstants::xboxPort};
   void ConfigureButtonBindings();
 };
