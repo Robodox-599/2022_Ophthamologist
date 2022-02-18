@@ -13,6 +13,8 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+<<<<<<< HEAD
+=======
 namespace DriveConstants
 {
     constexpr int frontLeftMotorPort = 2;
@@ -32,6 +34,7 @@ namespace DriveConstants
 >>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
 }
 
+>>>>>>> origin/auton
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
@@ -56,6 +59,29 @@ namespace ControllerConstants
     constexpr int xboxRightJoyPress = 10;
 }
 <<<<<<< HEAD
+namespace ArmConstants
+{
+    constexpr int ArmMotorPort = 7;
+    
+
+    constexpr double ArmEncoderMax = 0;
+    constexpr double ArmEncoderMin = 0;
+    constexpr double ArmEncoderLimitPercent = 10;
+
+    constexpr double Arm_kF = 0;
+    constexpr double Arm_kP = 0.1;
+    constexpr double Arm_kI = 0;
+    constexpr double Arm_kD = 0;
+
+    constexpr int ArmVelocity = 280;
+    constexpr int ArmAcceleration = 100;  
+
+    constexpr int ArmTicksUp = 50000;
+    constexpr int ArmTicksDown = 0;  
+}
+=======
+<<<<<<< HEAD
 
 =======
 >>>>>>> 4c921170e4c00c8756a4e02953846e105db9d5e3
+>>>>>>> origin/auton

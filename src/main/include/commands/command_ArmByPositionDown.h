@@ -6,26 +6,27 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-
-#include "subsystems/ExampleSubsystem.h"
-
+#include "subsystems/subsystem_Arm.h"
+#include "constants.h"
 /**
- * An example command that uses an example subsystem.
+ * An example command.
  *
  * <p>Note that this extends CommandHelper, rather extending CommandBase
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class ExampleCommand
-    : public frc2::CommandHelper<frc2::CommandBase, ExampleCommand> {
+class command_ArmByPositionDown
+    : public frc2::CommandHelper<frc2::CommandBase, command_ArmByPositionDown> {
  public:
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
-  explicit ExampleCommand(ExampleSubsystem* subsystem);
+  command_ArmByPositionDown(subsystem_Arm *Arm);
 
- private:
-  ExampleSubsystem* m_subsystem;
+  void Initialize() override;
+
+  void Execute() override;
+
+  void End(bool interrupted) override;
+
+  bool IsFinished() override;
+  subsystem_Arm* m_Arm;
+  
 };
