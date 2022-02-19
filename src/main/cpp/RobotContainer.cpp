@@ -10,7 +10,7 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
   
    //Initialize all of your commands and subsystems here
 
-  m_drive.SetDefaultCommand(command_DriveByJoystick(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);},
+  m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);},
   [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
   // Configure the button bindings
   ConfigureButtonBindings();

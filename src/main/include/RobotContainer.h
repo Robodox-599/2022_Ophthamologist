@@ -10,6 +10,7 @@
 #include "subsystems/ExampleSubsystem.h"
 #include "subsystems/subsystem_Drive.h"
 #include "commands/command_DriveByJoystick.h"
+#include "commands/command_DriveByPower.h"
 #include "commands/command_DriveByDistance.h"
 #include "frc/XboxController.h"
 #include "frc2/command/button/JoystickButton.h"
