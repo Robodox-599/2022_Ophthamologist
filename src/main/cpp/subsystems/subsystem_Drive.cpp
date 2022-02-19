@@ -57,8 +57,7 @@ double subsystem_Drive::GetPIDError(int inches)
 int subsystem_Drive::ConvertInchesToRotations(int inches)
 {
 
-  //WHEEL AND GEAR RATIO NEED TO BE FOUND OUT BEFORE THIS METHOD CAN BE USED 
-  //VALUES ARE FROM PREVIOUS YEARS CODE
+
   double wheelDiameter = 4;
   double gearRatio = 7.74;
 
