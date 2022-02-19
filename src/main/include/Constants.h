@@ -8,11 +8,23 @@
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
  * purpose.
- *
+ * 
  * It is generally a good idea to place constants into subsystem- or
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+
+namespace ShooterConstants
+{
+    constexpr int intakeMotorPort = 2;
+    constexpr double shooterkF = 0;
+    constexpr double shooterkP = 0;
+    constexpr double shooterkD = 0;
+    constexpr double shooterFeedInPower = 0.3;
+    constexpr double shooterFeedOutPower = -0.3;
+}
+
+
 namespace DriveConstants
 {
     constexpr int frontLeftMotorPort = 3;
@@ -32,6 +44,7 @@ namespace DriveConstants
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
+    constexpr int joystickPort = 1;
 
     constexpr int xboxLXAxis = 0;
     constexpr int xboxLYAxis = 1;
@@ -51,5 +64,35 @@ namespace ControllerConstants
     constexpr int xboxMenu = 8;
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
+
+    constexpr int atk3ArmUp = 6;
+    constexpr int atk3ArmDown = 4;
+    constexpr int atk3WinchUnlock = 7;
+    constexpr int atk3WinchUp = 10;
+    constexpr int atk3WinchDown = 11;
+    constexpr int atk3TraverseLeft = 8 ;
+    constexpr int atk3TraverseRight = 9;
+}
+
+
+namespace ArmConstants
+{
+    constexpr int ArmMotorPort = 7;
+    
+
+    constexpr double ArmEncoderMax = 0;
+    constexpr double ArmEncoderMin = 0;
+    constexpr double ArmEncoderLimitPercent = 10;
+
+    constexpr double Arm_kF = 0;
+    constexpr double Arm_kP = 0.1;
+    constexpr double Arm_kI = 0;
+    constexpr double Arm_kD = 0;
+
+    constexpr int ArmVelocity = 280;
+    constexpr int ArmAcceleration = 100;  
+
+    constexpr int ArmTicksUp = 50000;
+    constexpr int ArmTicksDown = 0;  
 }
 
