@@ -5,6 +5,8 @@
 #include "RobotContainer.h"
 
 RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
+ // m_Arm.SetDefaultCommand( command_ArmByPositionUp(&m_Arm));
+ // m_Arm.SetDefaultCommand( command_ArmByPositionDown(&m_Arm));
   // Initialize all of your commands and subsystems here
 
   // Configure the button bindings
@@ -13,6 +15,15 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
+
+  frc2::JoystickButton xboxA(&xbox, ControllerConstants::xboxA);
+  frc2::JoystickButton xboxB(&xbox, ControllerConstants::xboxB);
+  frc2::JoystickButton xboxX(&xbox, ControllerConstants::xboxX);
+  frc2::JoystickButton xboxY(&xbox, ControllerConstants::xboxY);
+  frc2::JoystickButton xboxRB(&xbox, ControllerConstants::xboxRB);
+  frc2::JoystickButton xboxLB(&xbox, ControllerConstants::xboxLB);
+   xboxA.WhenPressed(command_ArmByPositionDown(&m_Arm));
+   xboxB.WhenPressed(command_ArmByPositionUp(&m_Arm));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
