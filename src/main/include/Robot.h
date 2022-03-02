@@ -4,8 +4,10 @@
 
 #pragma once
 
+#include <cameraserver/CameraServer.h>
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
+#include "frc/smartdashboard/SmartDashboard.h"
 
 #include "RobotContainer.h"
 
@@ -27,4 +29,5 @@ class Robot : public frc::TimedRobot {
   frc2::Command* m_autonomousCommand = nullptr;
 
   RobotContainer m_container;
+
 };

@@ -7,7 +7,12 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() 
+{
+  cs::UsbCamera camera0 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
+  camera0.SetResolution(320, 240);
+  frc::SmartDashboard::PutNumber("Alliance: ", 0); 
+}
 
 /**
  * This function is called every robot packet, no matter the mode. Use
@@ -53,12 +58,16 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
+
+
+
 }
 
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+}
 
 /**
  * This function is called periodically during test mode.
