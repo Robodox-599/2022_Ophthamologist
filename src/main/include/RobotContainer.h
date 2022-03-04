@@ -9,6 +9,7 @@
 #include "commands/ExampleCommand.h"
 #include "subsystems/ExampleSubsystem.h"
 
+<<<<<<< HEAD
 #include "subsystems/subsystem_Arm.h"
 #include "commands/command_ArmByPositionDown.h"
 #include "commands/command_ArmByPositionUp.h"
@@ -18,6 +19,30 @@
 #include "Constants.h"
 
 
+=======
+#include "subsystems/subsystem_Drive.h"
+#include "subsystems/subsystem_Arm.h"
+#include "subsystems/subsystem_Shooter.h"
+
+#include "commands/cGroup_TriangleAuto.h"
+#include "commands/cGroup_ThreeBallAuto.h"
+#include "commands/cGroup_TwoBallAuto.h"
+#include "commands/cGroup_OneBallAuto.h"
+#include "commands/cGroup_OneBallAutoIntake.h"
+#include "commands/cGroup_AutonomousDelayedDrive.h"
+#include "commands/cGroup_AutoDelayedDriveIntake.h"
+
+
+#include "commands/command_DriveByJoystick.h"
+#include "commands/command_DriveByPower.h"
+#include "commands/command_DriveByDistance.h"
+#include "frc/XboxController.h"
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/smartdashboard/SendableChooser.h>
+#include "frc2/command/button/JoystickButton.h"
+#include "constants.h"
+#include <frc/Joystick.h>
+>>>>>>> origin/auton
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -36,8 +61,35 @@ class RobotContainer {
   // The robot's subsystems and commands are defined here...
   ExampleSubsystem m_subsystem;
   ExampleCommand m_autonomousCommand;
+<<<<<<< HEAD
   subsystem_Arm m_Arm;
 
+=======
+  subsystem_Drive m_drive;
+  subsystem_Arm m_arm;
+  subsystem_Shooter m_shooter;
+
+  cGroup_AutonomousDelayedDrive m_zeroBallAuto{&m_drive, 40, 0, 10.0};
+  cGroup_AutonomousDelayedDrive m_delayedZeroBallAuto{&m_drive, 40, 10.0, 10.0};
+  cGroup_AutoDelayedDriveIntake m_zeroBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 40, 10.0};
+
+
+  cGroup_OneBallAuto m_oneBallAuto{&m_drive, &m_shooter, &m_arm, 0.0, 0, 5, 0.8, 10, 60};
+  cGroup_OneBallAutoIntake m_oneBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 3.0, 50, 5, 180.0, 40};
+  cGroup_OneBallAutoIntake m_MidBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 3.0, 50, 50, -110.0, 20};
+
+
+
+  cGroup_TwoBallAuto m_twoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, 20, 5.0, 180.0, 20, 10.0, 30, 3, 60};
+  cGroup_TwoBallAuto m_complexTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, 20, 5.0, 180.0, 20, 45.0, 10, 3, 60 };
+  cGroup_TriangleAuto m_triangleAuto{&m_drive, &m_shooter, &m_arm, 0.8, 3, 20, 5, 170.0, 40, 60.0, 40, 90.0, 20, -30.0, 20};  
+
+  frc::SendableChooser<frc2::Command*> m_chooser;
+  
+
+
+
+>>>>>>> origin/auton
   frc::XboxController xbox{ControllerConstants::xboxPort};
   void ConfigureButtonBindings();
 };

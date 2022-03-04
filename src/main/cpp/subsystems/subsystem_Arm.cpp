@@ -7,7 +7,7 @@
 subsystem_Arm::subsystem_Arm() : m_ArmMotor{ArmConstants::ArmMotorPort, rev::CANSparkMax::MotorType::kBrushless}{
     //arm motor set up 
 
-    double kP = 0.02, kI = 0, kD = 0, kIz = 0, kFF = 0, kMaxOutput = 1, kMinOutput = -1;
+    double kP = 0.1, kI = 0, kD = 0, kIz = 0, kFF = 0, kMaxOutput = .1, kMinOutput = -.1;
     m_ArmPidController.SetP(kP);
     m_ArmPidController.SetI(kI);
     m_ArmPidController.SetD(kD);

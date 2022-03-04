@@ -24,6 +24,10 @@ class subsystem_Arm : public frc2::SubsystemBase {
   rev::CANSparkMax m_ArmMotor;
   rev::SparkMaxRelativeEncoder m_ArmEncoder = m_ArmMotor.GetEncoder();
   rev::SparkMaxPIDController m_ArmPidController = m_ArmMotor.GetPIDController();
+<<<<<<< HEAD
+=======
+  bool m_IsArmRaised = false;
+>>>>>>> origin/auton
 
 
 

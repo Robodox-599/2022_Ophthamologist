@@ -11,7 +11,6 @@ command_ArmByPositionDown::command_ArmByPositionDown(subsystem_Arm* Arm): m_Arm{
 // Called when the command is initially scheduled.
 void command_ArmByPositionDown::Initialize() {
   m_Arm->SetArmPosition(ArmConstants::ArmTicksDown);
-
 }
 
 // Called repeatedly when this Command is scheduled to run

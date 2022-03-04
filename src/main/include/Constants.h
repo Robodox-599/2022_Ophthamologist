@@ -13,6 +13,55 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+<<<<<<< HEAD
+=======
+namespace DriveConstants
+{
+    constexpr int frontLeftMotorPort = 3;
+    constexpr int rearLeftMotorPort = 4;
+    constexpr int frontRightMotorPort = 2;
+    constexpr int rearRightMotorPort = 1;
+
+    constexpr int leftEncoderPort = 1;
+    constexpr int rightEncoderPort = 3;
+
+    constexpr int pigeonPort = 0;
+
+    constexpr double skimGain = 0.8;
+    constexpr double turnGain = 0.1;
+
+    constexpr double snuggleCurrent = 0.0;
+}
+
+namespace ArmConstants
+{
+    constexpr int ArmMotorPort = 3;
+    
+
+    constexpr double ArmEncoderMax = 0;
+    constexpr double ArmEncoderMin = 0;
+    constexpr double ArmEncoderLimitPercent = 10;
+
+
+    constexpr double ArmVelocity = 20;
+    constexpr double ArmAcceleration = .001;  
+
+//VALUES USED FOR COMMANDS
+    constexpr int ArmTicksUp = 100;
+    constexpr int ArmTicksDown = 0;
+}
+
+namespace ShooterConstants
+{
+    constexpr int intakeMotorPort = 2;
+    constexpr double shooterkF = 0;
+    constexpr double shooterkP = 0;
+    constexpr double shooterkD = 0;
+    constexpr double shooterFeedInPower = 0.3;
+    constexpr double shooterFeedOutPower = -0.3;
+}
+
+>>>>>>> origin/auton
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
@@ -36,6 +85,7 @@ namespace ControllerConstants
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
 }
+<<<<<<< HEAD
 namespace ArmConstants
 {
     constexpr int ArmMotorPort = 3
@@ -54,3 +104,6 @@ namespace ArmConstants
     constexpr int ArmTicksUp = 10;
     constexpr int ArmTicksDown = 0;
 }
+=======
+
+>>>>>>> origin/auton
