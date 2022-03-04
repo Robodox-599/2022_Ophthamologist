@@ -6,9 +6,9 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-
+#include "frc/smartdashboard/SmartDashboard.h"
 #include "subsystems/subsystem_Drive.h"
-#include "Constants.h"
+#include "subsystems/subsystem_Vision.h"
 
 /**
  * An example command.
@@ -17,14 +17,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class command_TurnByDegrees
-    : public frc2::CommandHelper<frc2::CommandBase, command_TurnByDegrees> {
+class command_VisionTracking
+    : public frc2::CommandHelper<frc2::CommandBase, command_VisionTracking> {
  public:
-<<<<<<< HEAD
-  command_TurnByDegrees(subsystem_Drive* Drive, double Degrees);
-=======
-  command_TurnByDegrees(subsystem_Drive* Drive, std::function<double()> Degrees);
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
+  command_VisionTracking(subsystem_Vision *vision, subsystem_Drive *drive);
 
   void Initialize() override;
 
@@ -33,11 +29,11 @@ class command_TurnByDegrees
   void End(bool interrupted) override;
 
   bool IsFinished() override;
-  private:
-  subsystem_Drive* m_Drive;
-<<<<<<< HEAD
-  double m_Degrees;
-=======
-  std::function<double()> m_Degrees;
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
+ private:
+  subsystem_Vision *m_vision;
+  subsystem_Drive *m_drive;
+  static constexpr double kT = 0.63661977236;
+  static constexpr double turnTest = 0.15; 
+  static constexpr double pMax = 0.15;
+  static constexpr double wMax = 314; 
 };

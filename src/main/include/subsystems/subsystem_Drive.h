@@ -7,8 +7,13 @@
 
 #pragma once
 
+<<<<<<< HEAD
 #include <math.h>
 #include <frc2/command/SubsystemBase.h>
+=======
+#include <frc2/command/SubsystemBase.h>
+#include "frc/smartdashboard/SmartDashboard.h"
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 #include "rev/CANSparkMax.h"
 #include "Constants.h"
 
@@ -21,19 +26,29 @@ class subsystem_Drive : public frc2::SubsystemBase {
   void JoystickPowerDrive(double x, double y);
   void DriveDistance(int inches);
   double GetPIDError(int inches);
+<<<<<<< HEAD
   double GetCurrentOutput();
   double Skim(double input);
   void TurnByDegrees(int degrees);
   void DriveByPower(double turn, double throttle);
   void JoystickDrive(double x, double y);
+=======
+  double Skim(double input);
+  void TurnByDegrees(int degrees);
+  void DriveByPower(double turn, double throttle);
+
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic();
+<<<<<<< HEAD
   void SetPositionControl();
   int ConvertInchesToRotations(int inches);
+=======
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 
 
  private:
@@ -51,5 +66,10 @@ class subsystem_Drive : public frc2::SubsystemBase {
   rev::SparkMaxPIDController m_rightPidController = m_frontRightMotor.GetPIDController();
 
 
+<<<<<<< HEAD
   
+=======
+  void SetPositionControl();
+  int ConvertInchesToRotations(int inches);
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 };

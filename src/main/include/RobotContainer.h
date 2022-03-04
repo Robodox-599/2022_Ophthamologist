@@ -5,9 +5,14 @@
 #pragma once
 
 #include <frc2/command/Command.h>
-
-#include "commands/ExampleCommand.h"
-#include "subsystems/ExampleSubsystem.h"
+#include <frc/Joystick.h>
+#include <frc/smartdashboard/SendableChooser.h>
+#include "frc/XboxController.h"
+#include "frc2/command/button/JoystickButton.h"
+#include "subsystems/subsystem_Drive.h"
+#include "subsystems/subsystem_Vision.h"
+#include "commands/command_VisionTracking.h"
+#include "commands/placeHolder.h"
 
 #include "subsystems/subsystem_Drive.h"
 #include "subsystems/subsystem_Arm.h"
@@ -47,11 +52,19 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
+<<<<<<< HEAD
   ExampleSubsystem m_subsystem;
   ExampleCommand m_autonomousCommand;
   subsystem_Drive m_drive;
   subsystem_Arm m_arm;
   subsystem_Shooter m_shooter;
+=======
+  subsystem_Vision m_subsystem_Vision;
+  subsystem_Drive m_drive;
+  placeHolder m_autonomousCommand;
+
+  frc::XboxController xbox{ControllerConstants::xboxPort};
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 
   cGroup_AutonomousDelayedDrive m_zeroBallAuto{&m_drive, 40, 0, 10.0};
   cGroup_AutonomousDelayedDrive m_delayedZeroBallAuto{&m_drive, 40, 10.0, 10.0};
@@ -75,4 +88,5 @@ class RobotContainer {
 
   frc::XboxController xbox{ControllerConstants::xboxPort};
   void ConfigureButtonBindings();
+
 };

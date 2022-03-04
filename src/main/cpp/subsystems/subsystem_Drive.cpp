@@ -6,7 +6,11 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/subsystem_Drive.h"
+<<<<<<< HEAD
 
+=======
+#include "Constants.h"
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 
 subsystem_Drive::subsystem_Drive() :
   m_frontLeftMotor{DriveConstants::frontLeftMotorPort, rev::CANSparkMax::MotorType::kBrushless},
@@ -34,6 +38,15 @@ void subsystem_Drive::SetPositionControl()
   m_leftPidController.SetFF(kFF);
   m_leftPidController.SetOutputRange(kMinOutput, kMaxOutput);
 
+<<<<<<< HEAD
+=======
+  m_rightPidController.SetD(kD);
+  m_rightPidController.SetI(kI);
+  m_rightPidController.SetP(kP);
+  m_rightPidController.SetIZone(kIz);
+  m_rightPidController.SetFF(kFF);
+  m_rightPidController.SetOutputRange(kMinOutput, kMaxOutput);
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 }
 
 void subsystem_Drive::DriveDistance(int inches)
@@ -48,17 +61,25 @@ double subsystem_Drive::GetPIDError(int inches)
   return m_leftEncoder.GetPosition() - ConvertInchesToRotations(inches);
 }
 
+<<<<<<< HEAD
 double subsystem_Drive::GetCurrentOutput(){
   return ( m_frontLeftMotor.GetOutputCurrent() + m_frontRightMotor.GetOutputCurrent() + m_rearLeftMotor.GetOutputCurrent() + m_rearRightMotor.GetOutputCurrent() ) /4.0;
 }
 
+=======
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 int subsystem_Drive::ConvertInchesToRotations(int inches)
 {
 
   //WHEEL AND GEAR RATIO NEED TO BE FOUND OUT BEFORE THIS METHOD CAN BE USED 
   //VALUES ARE FROM PREVIOUS YEARS CODE
+<<<<<<< HEAD
   double wheelDiameter = 4;
   double gearRatio = 7.74;
+=======
+  double wheelDiameter = 6;
+  double gearRatio = 10.45;
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 
   return ((inches)/(wheelDiameter*3.14))*gearRatio;
 }
@@ -79,14 +100,20 @@ void subsystem_Drive::JoystickPowerDrive(double x, double y)
   {
     y = 0;
   }
+<<<<<<< HEAD
 
   
+=======
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
   if (x > 0.2)
   {
     x = (x - 0.2) * 1 / .8;
   }
   else if (x < -0.2)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
   {
     x = (x + 0.2) * 1 / .8;
   }
@@ -115,7 +142,11 @@ double subsystem_Drive::Skim(double input){
 
 void subsystem_Drive::DriveByPower(double turn, double throttle){
 
+<<<<<<< HEAD
   if (throttle > .2){
+=======
+  if (throttle > .5){
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
     turn = turn * (DriveConstants::turnGain * fabs(throttle));
   }
   
@@ -125,6 +156,7 @@ void subsystem_Drive::DriveByPower(double turn, double throttle){
   double leftMotorOutput = left + Skim(right);
   double rightMotorOutput = right + Skim(left);
 
+<<<<<<< HEAD
    m_frontLeftMotor.Set(leftMotorOutput);
    m_rearLeftMotor.Set(leftMotorOutput);
    m_frontRightMotor.Set(rightMotorOutput);
@@ -143,6 +175,10 @@ void subsystem_Drive::JoystickDrive(double x, double y){
 
   DriveByPower(x, y);
 
+=======
+  frc::SmartDashboard::PutNumber("Left: ", leftMotorOutput);
+  frc::SmartDashboard::PutNumber("Right: ", rightMotorOutput);
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 }
 /*positive values are clockwise and negative values are counterclockwise*/
 void subsystem_Drive::TurnByDegrees(int degrees){
@@ -151,11 +187,14 @@ void subsystem_Drive::TurnByDegrees(int degrees){
   SetPositionControl();
   m_leftPidController.SetReference(ConvertInchesToRotations(inches), rev::ControlType::kPosition);
   m_rightPidController.SetReference(-1 * ConvertInchesToRotations(inches), rev::ControlType::kPosition);
+<<<<<<< HEAD
   //same thing but with rotations instead of inches traveled
   // double rotations = degrees * (0.0/360.0);
   // SetPositionControl();
   // m_leftPidController.SetReference(rotations, rev::ControlType::kPosition);
   // m_rightPidController.SetReference(-1 * rotations, rev::ControlType::kPosition);
+=======
+>>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 }
 
 

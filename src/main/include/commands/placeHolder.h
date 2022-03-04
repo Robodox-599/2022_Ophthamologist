@@ -7,9 +7,6 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 
-#include "subsystems/subsystem_Drive.h"
-#include "Constants.h"
-
 /**
  * An example command.
  *
@@ -17,14 +14,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class command_TurnByDegrees
-    : public frc2::CommandHelper<frc2::CommandBase, command_TurnByDegrees> {
+class placeHolder
+    : public frc2::CommandHelper<frc2::CommandBase, placeHolder> {
  public:
-<<<<<<< HEAD
-  command_TurnByDegrees(subsystem_Drive* Drive, double Degrees);
-=======
-  command_TurnByDegrees(subsystem_Drive* Drive, std::function<double()> Degrees);
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
+  placeHolder();
 
   void Initialize() override;
 
@@ -33,11 +26,4 @@ class command_TurnByDegrees
   void End(bool interrupted) override;
 
   bool IsFinished() override;
-  private:
-  subsystem_Drive* m_Drive;
-<<<<<<< HEAD
-  double m_Degrees;
-=======
-  std::function<double()> m_Degrees;
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 };
