@@ -4,7 +4,11 @@
 
 #include "commands/command_TurnByDegrees.h"
 
+<<<<<<< HEAD
 command_TurnByDegrees::command_TurnByDegrees(subsystem_Drive* Drive, double Degrees):
+=======
+command_TurnByDegrees::command_TurnByDegrees(subsystem_Drive* Drive, std::function<double()> Degrees):
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 m_Drive{Drive},
 m_Degrees{Degrees} {
   AddRequirements({Drive});
@@ -13,7 +17,11 @@ m_Degrees{Degrees} {
 
 // Called when the command is initially scheduled.
 void command_TurnByDegrees::Initialize() {
+<<<<<<< HEAD
   m_Drive->TurnByDegrees(m_Degrees);
+=======
+  m_Drive->TurnByDegrees(m_Degrees());
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 }
 
 // Called repeatedly when this Command is scheduled to run

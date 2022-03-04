@@ -7,11 +7,16 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
+<<<<<<< HEAD
 void Robot::RobotInit() 
 {
   cs::UsbCamera camera0 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
   camera0.SetResolution(320, 240);
   frc::SmartDashboard::PutNumber("Alliance: ", 0); 
+=======
+void Robot::RobotInit() {
+
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 }
 
 /**

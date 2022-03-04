@@ -19,7 +19,24 @@
 class command_Timer
     : public frc2::CommandHelper<frc2::CommandBase, command_Timer> {
  public:
+<<<<<<<< HEAD:src/main/include/commands/command_Timer.h
   command_Timer(double Time);
+========
+  /**
+   * Creates a new ExampleCommand.
+   *
+   * @param subsystem The subsystem used by this command.
+   */
+  explicit ExampleCommand(ExampleSubsystem* subsystem);
+  
+void Initialize() override;
+
+void Execute() override;
+
+void End(bool interrupted) override;
+
+bool IsFinished() override;
+>>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125:src/main/include/commands/ExampleCommand.h
 
   void Initialize() override;
 

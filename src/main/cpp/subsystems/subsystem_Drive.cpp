@@ -7,6 +7,10 @@
 
 #include "subsystems/subsystem_Drive.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 subsystem_Drive::subsystem_Drive() :
   m_frontLeftMotor{DriveConstants::frontLeftMotorPort, rev::CANSparkMax::MotorType::kBrushless},
   m_frontRightMotor{DriveConstants::frontRightMotorPort, rev::CANSparkMax::MotorType::kBrushless},
@@ -33,12 +37,15 @@ void subsystem_Drive::SetPositionControl()
   m_leftPidController.SetFF(kFF);
   m_leftPidController.SetOutputRange(kMinOutput, kMaxOutput);
 
+<<<<<<< HEAD
   m_rightPidController.SetD(kD);
   m_rightPidController.SetI(kI);
   m_rightPidController.SetP(kP);
   m_rightPidController.SetIZone(kIz);
   m_rightPidController.SetFF(kFF);
   m_rightPidController.SetOutputRange(kMinOutput, kMaxOutput);
+=======
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 }
 
 void subsystem_Drive::DriveDistance(int inches)
@@ -53,10 +60,13 @@ double subsystem_Drive::GetPIDError(int inches)
   return m_leftEncoder.GetPosition() - ConvertInchesToRotations(inches);
 }
 
+<<<<<<< HEAD
 double subsystem_Drive::GetCurrentOutput(){
   return ( m_frontLeftMotor.GetOutputCurrent() + m_frontRightMotor.GetOutputCurrent() + m_rearLeftMotor.GetOutputCurrent() + m_rearRightMotor.GetOutputCurrent() ) /4.0;
 }
 
+=======
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 int subsystem_Drive::ConvertInchesToRotations(int inches)
 {
 
@@ -84,11 +94,20 @@ void subsystem_Drive::JoystickPowerDrive(double x, double y)
   {
     y = 0;
   }
+<<<<<<< HEAD
+=======
+
+  
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
   if (x > 0.2)
   {
     x = (x - 0.2) * 1 / .8;
   }
   else if (x < -0.2)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
   {
     x = (x + 0.2) * 1 / .8;
   }
@@ -144,8 +163,17 @@ void subsystem_Drive::JoystickDrive(double x, double y){
   else{x = 0;}
 
   DriveByPower(x, y);
+<<<<<<< HEAD
 
 }
+=======
+}
+
+void subsystem_Drive::ThrottleDrive(double ltY, double rtY, double X){
+
+}
+
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 /*positive values are clockwise and negative values are counterclockwise*/
 void subsystem_Drive::TurnByDegrees(int degrees){
   //0.0 is a place holder for the distance traveled by the wheels when making a full 360 degree turn
@@ -153,11 +181,14 @@ void subsystem_Drive::TurnByDegrees(int degrees){
   SetPositionControl();
   m_leftPidController.SetReference(ConvertInchesToRotations(inches), rev::ControlType::kPosition);
   m_rightPidController.SetReference(-1 * ConvertInchesToRotations(inches), rev::ControlType::kPosition);
+<<<<<<< HEAD
   //same thing but with rotations instead of inches traveled
   // double rotations = degrees * (0.0/360.0);
   // SetPositionControl();
   // m_leftPidController.SetReference(rotations, rev::ControlType::kPosition);
   // m_rightPidController.SetReference(-1 * rotations, rev::ControlType::kPosition);
+=======
+>>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 }
 
 
