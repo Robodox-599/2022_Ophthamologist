@@ -37,6 +37,20 @@
 #include "constants.h"
 #include <frc/Joystick.h>
 
+#include "commands/command_LockClimb.h"
+#include "commands/command_SetClimbByPosition.h"
+#include "commands/command_SetClimbByPower.h"
+#include "commands/command_UnlockClimb.h"
+#include "commands/command_DecrementWinchPosition.h"
+#include "commands/command_IncrementWinchPosition.h"
+#include "subsystems/subsystem_Climb.h"
+
+#include "frc/XboxController.h"
+#include "frc2/command/button/JoystickButton.h"
+#include <frc/Joystick.h>
+#include "Constants.h"
+
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -52,6 +66,7 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
+<<<<<<< HEAD
   subsystem_Drive m_drive;
   subsystem_Arm m_arm;
   subsystem_Shooter m_shooter;
@@ -80,6 +95,14 @@ class RobotContainer {
 
 
   frc::XboxController xbox{ControllerConstants::xboxPort};
+=======
+  ExampleSubsystem m_subsystem;
+  ExampleCommand m_autonomousCommand;
+  subsystem_Climb m_Climb;
+
+  frc::XboxController xbox{ControllerConstants::xboxPort};
+  frc::Joystick atk3{ControllerConstants::joystickPort};
+>>>>>>> 8c52a614e3964ef1ce83c9e91e290a080cf585ff
   void ConfigureButtonBindings();
 
 };
