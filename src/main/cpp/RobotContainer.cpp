@@ -40,17 +40,12 @@ RobotContainer::RobotContainer()  {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-<<<<<<< HEAD
-=======
-  
->>>>>>> 8c52a614e3964ef1ce83c9e91e290a080cf585ff
   frc2::JoystickButton xboxA(&xbox, ControllerConstants::xboxA);
   frc2::JoystickButton xboxB(&xbox, ControllerConstants::xboxB);
   frc2::JoystickButton xboxX(&xbox, ControllerConstants::xboxX);
   frc2::JoystickButton xboxY(&xbox, ControllerConstants::xboxY);
   frc2::JoystickButton xboxRB(&xbox, ControllerConstants::xboxRB);
   frc2::JoystickButton xboxLB(&xbox, ControllerConstants::xboxLB);
-<<<<<<< HEAD
   xboxRB.WhenPressed( command_ArmByPositionDown(&m_arm) );
   xboxRB.WhenReleased( command_ArmByPositionUp(&m_arm) );
   xboxA.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return 0.1;}));
@@ -59,7 +54,6 @@ void RobotContainer::ConfigureButtonBindings() {
   xboxB.WhenReleased( command_ShooterFeedOutput(&m_shooter, [=]{return 0;})); 
 
   xboxY.WhenHeld(command_VisionTracking(&m_subsystem_Vision, &m_drive)); 
-=======
 
   frc2::JoystickButton atk3WinchUnlock(&atk3, ControllerConstants::atk3WinchUnlock);
   frc2::JoystickButton atk3WinchLock(&atk3, ControllerConstants::atk3WinchLock);
@@ -70,7 +64,6 @@ void RobotContainer::ConfigureButtonBindings() {
   atk3WinchLock.WhenPressed(command_LockClimb(&m_Climb));
   atk3WinchUnlock.WhenPressed(command_UnlockClimb(&m_Climb));
   
->>>>>>> 8c52a614e3964ef1ce83c9e91e290a080cf585ff
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

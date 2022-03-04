@@ -13,7 +13,6 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
-<<<<<<< HEAD
 namespace DriveConstants
 {
     constexpr int frontLeftMotorPort = 3;
@@ -58,7 +57,8 @@ namespace ShooterConstants
     constexpr double shooterkD = 0;
     constexpr double shooterFeedInPower = 0.3;
     constexpr double shooterFeedOutPower = -0.3;
-=======
+}
+
 namespace ClimbConstants
 {
     constexpr int leftWinchMotorPort = 1;
@@ -77,16 +77,12 @@ namespace ClimbConstants
     constexpr int ClimbAcceleration = 0;  
 
     constexpr int ClimbTicksCrement = 100;
->>>>>>> 8c52a614e3964ef1ce83c9e91e290a080cf585ff
 }
 
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
-<<<<<<< HEAD
-=======
     constexpr int joystickPort = 1;
->>>>>>> 8c52a614e3964ef1ce83c9e91e290a080cf585ff
 
     constexpr int xboxLXAxis = 0;
     constexpr int xboxLYAxis = 1;
@@ -106,13 +102,10 @@ namespace ControllerConstants
     constexpr int xboxMenu = 8;
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
-<<<<<<< HEAD
     constexpr int xboxRightDPad = 11;
-=======
 
     constexpr int atk3WinchLock = 6;
     constexpr int atk3WinchUnlock = 7;
     constexpr int atk3WinchUp = 11;
     constexpr int atk3WinchDown = 12;
->>>>>>> 8c52a614e3964ef1ce83c9e91e290a080cf585ff
 }
