@@ -16,10 +16,6 @@ class cGroup_AutonomousDelayedDrive
     : public frc2::CommandHelper<frc2::SequentialCommandGroup,
                                  cGroup_AutonomousDelayedDrive> {
  public:
-<<<<<<< HEAD
   cGroup_AutonomousDelayedDrive(subsystem_Drive* Drive, int inches, double time, double timeout);
-=======
-  cGroup_AutonomousDelayedDrive(subsystem_Drive* Drive, std::function<double()> Inches, double Time);
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 
 };

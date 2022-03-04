@@ -24,7 +24,6 @@ namespace DriveConstants
     constexpr int rightEncoderPort = 3;
 
     constexpr int pigeonPort = 0;
-<<<<<<< HEAD
 
     constexpr double skimGain = 0.8;
     constexpr double turnGain = 0.1;
@@ -78,20 +77,12 @@ namespace ClimbConstants
     constexpr int ClimbAcceleration = 0;  
 
     constexpr int ClimbTicksCrement = 100;
-=======
-    
-    constexpr double skimGain = 0.9;
-    constexpr double turnGain = 0.1;
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 }
 
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
-<<<<<<< HEAD
     constexpr int joystickPort = 1;
-=======
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 
     constexpr int xboxLXAxis = 0;
     constexpr int xboxLYAxis = 1;
@@ -111,7 +102,6 @@ namespace ControllerConstants
     constexpr int xboxMenu = 8;
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
-<<<<<<< HEAD
     constexpr int xboxRightDPad = 11;
 
     constexpr int atk3WinchLock = 6;
@@ -119,7 +109,3 @@ namespace ControllerConstants
     constexpr int atk3WinchUp = 11;
     constexpr int atk3WinchDown = 12;
 }
-=======
-}
-
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125

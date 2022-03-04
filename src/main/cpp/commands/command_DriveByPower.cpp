@@ -15,20 +15,12 @@ m_Y{Y}
 
 // Called when the command is initially scheduled.
 void command_DriveByPower::Initialize() {
-<<<<<<< HEAD
-  m_Drive->JoystickDrive(m_X(), m_Y());
-}
-
-// Called repeatedly when this Command is scheduled to run
-void command_DriveByPower::Execute() {}
-=======
 }
 
 // Called repeatedly when this Command is scheduled to run
 void command_DriveByPower::Execute() {
   m_Drive->JoystickDrive(m_X(), m_Y());
 }
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 
 // Called once the command ends or is interrupted.
 void command_DriveByPower::End(bool interrupted) {}

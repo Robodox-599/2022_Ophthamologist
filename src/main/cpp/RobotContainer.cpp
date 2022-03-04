@@ -8,7 +8,7 @@
 #include "Constants.h"
 
 
-<<<<<<< HEAD
+
 RobotContainer::RobotContainer()  {
   // m_chooser.SetDefaultOption("Middle Auto", &m_autonomousCommandMiddle);
   // m_chooser.AddOption("Left Auto", &m_autonomousCommandLeft);
@@ -32,11 +32,6 @@ RobotContainer::RobotContainer()  {
   // m_Arm.SetDefaultCommand( command_ArmByPositionUp(&m_Arm));
  // m_Arm.SetDefaultCommand( command_ArmByPositionDown(&m_Arm));
   // Initialize all of your commands and subsystems here
-=======
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
-  
-   //Initialize all of your commands and subsystems here
-
   m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);},
   [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}));
   // m_drive.SetDefaultCommand(command_DriveByJoystick(&m_drive, [this]{return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}, 
@@ -44,14 +39,11 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
 
  // m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRTAxis) - xbox.GetRawAxis(ControllerConstants::xboxLTAxis); }, 
   //                                                [this] {return xbox.GetRawAxis(ControllerConstants::xboxLXAxis);}));
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
-
-  m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);},
-  [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
   // Configure the button bindings
 
   ConfigureButtonBindings();
 }
+
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
@@ -61,14 +53,12 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton xboxY(&xbox, ControllerConstants::xboxY);
   frc2::JoystickButton xboxRB(&xbox, ControllerConstants::xboxRB);
   frc2::JoystickButton xboxLB(&xbox, ControllerConstants::xboxLB);
-<<<<<<< HEAD
   xboxRB.WhenPressed( command_ArmByPositionDown(&m_arm) );
   xboxRB.WhenReleased( command_ArmByPositionUp(&m_arm) );
   xboxA.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return 0.1;}));
   xboxA.WhenReleased( command_ShooterFeedOutput(&m_shooter, [=]{return 0;}));
   xboxB.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return -0.1;}));
   xboxB.WhenReleased( command_ShooterFeedOutput(&m_shooter, [=]{return 0;})); 
-
   xboxY.WhenHeld(command_VisionTracking(&m_subsystem_Vision, &m_drive)); 
 
   frc2::JoystickButton atk3WinchUnlock(&atk3, ControllerConstants::atk3WinchUnlock);
@@ -79,8 +69,6 @@ void RobotContainer::ConfigureButtonBindings() {
   atk3WinchDown.WhileHeld(command_DecrementWinchPosition(&m_Climb));
   atk3WinchLock.WhenPressed(command_LockClimb(&m_Climb));
   atk3WinchUnlock.WhenPressed(command_UnlockClimb(&m_Climb));
-=======
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
   
 }
 

@@ -20,11 +20,7 @@
 class command_TurnByDegrees
     : public frc2::CommandHelper<frc2::CommandBase, command_TurnByDegrees> {
  public:
-<<<<<<< HEAD
   command_TurnByDegrees(subsystem_Drive* Drive, double Degrees);
-=======
-  command_TurnByDegrees(subsystem_Drive* Drive, std::function<double()> Degrees);
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 
   void Initialize() override;
 
@@ -35,9 +31,5 @@ class command_TurnByDegrees
   bool IsFinished() override;
   private:
   subsystem_Drive* m_Drive;
-<<<<<<< HEAD
   double m_Degrees;
-=======
-  std::function<double()> m_Degrees;
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 };

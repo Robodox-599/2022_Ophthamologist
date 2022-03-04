@@ -9,11 +9,8 @@
 
 #include <math.h>
 #include <frc2/command/SubsystemBase.h>
-<<<<<<< HEAD
 #include <frc2/command/SubsystemBase.h>
 #include "frc/smartdashboard/SmartDashboard.h"
-=======
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 #include "rev/CANSparkMax.h"
 #include "Constants.h"
 
@@ -26,18 +23,12 @@ class subsystem_Drive : public frc2::SubsystemBase {
   void JoystickPowerDrive(double x, double y);
   void DriveDistance(int inches);
   double GetPIDError(int inches);
-<<<<<<< HEAD
   double GetCurrentOutput();
-=======
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
   double Skim(double input);
   void TurnByDegrees(int degrees);
   void DriveByPower(double turn, double throttle);
   void JoystickDrive(double x, double y);
-<<<<<<< HEAD
-=======
   void ThrottleDrive(double ltY, double rtY, double x);
->>>>>>> 113b445ca4f2a53d904bf70f4ab1dd74b1cec125
 
 
   /**
