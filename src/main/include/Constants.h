@@ -13,8 +13,6 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
-<<<<<<< HEAD
-=======
 namespace DriveConstants
 {
     constexpr int frontLeftMotorPort = 3;
@@ -61,7 +59,6 @@ namespace ShooterConstants
     constexpr double shooterFeedOutPower = -0.3;
 }
 
->>>>>>> origin/auton
 namespace ControllerConstants
 {
     constexpr int xboxPort = 0;
@@ -85,25 +82,3 @@ namespace ControllerConstants
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
 }
-<<<<<<< HEAD
-namespace ArmConstants
-{
-    constexpr int ArmMotorPort = 3
-    ;
-    
-
-    constexpr double ArmEncoderMax = 0;
-    constexpr double ArmEncoderMin = 0;
-    constexpr double ArmEncoderLimitPercent = 10;
-
-
-    constexpr int ArmVelocity = 200;
-    constexpr int ArmAcceleration = 100;  
-
-//VALUES USED FOR COMMANDS
-    constexpr int ArmTicksUp = 10;
-    constexpr int ArmTicksDown = 0;
-}
-=======
-
->>>>>>> origin/auton

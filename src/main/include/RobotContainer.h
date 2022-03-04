@@ -9,17 +9,6 @@
 #include "commands/ExampleCommand.h"
 #include "subsystems/ExampleSubsystem.h"
 
-<<<<<<< HEAD
-#include "subsystems/subsystem_Arm.h"
-#include "commands/command_ArmByPositionDown.h"
-#include "commands/command_ArmByPositionUp.h"
-
-#include "frc/XboxController.h"
-#include "frc2/command/button/JoystickButton.h"
-#include "Constants.h"
-
-
-=======
 #include "subsystems/subsystem_Drive.h"
 #include "subsystems/subsystem_Arm.h"
 #include "subsystems/subsystem_Shooter.h"
@@ -42,7 +31,6 @@
 #include "frc2/command/button/JoystickButton.h"
 #include "constants.h"
 #include <frc/Joystick.h>
->>>>>>> origin/auton
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -61,10 +49,6 @@ class RobotContainer {
   // The robot's subsystems and commands are defined here...
   ExampleSubsystem m_subsystem;
   ExampleCommand m_autonomousCommand;
-<<<<<<< HEAD
-  subsystem_Arm m_Arm;
-
-=======
   subsystem_Drive m_drive;
   subsystem_Arm m_arm;
   subsystem_Shooter m_shooter;
@@ -89,7 +73,6 @@ class RobotContainer {
 
 
 
->>>>>>> origin/auton
   frc::XboxController xbox{ControllerConstants::xboxPort};
   void ConfigureButtonBindings();
 };
