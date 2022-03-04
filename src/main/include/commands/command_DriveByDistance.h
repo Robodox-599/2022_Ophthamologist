@@ -10,12 +10,8 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/subsystem_Drive.h"
-<<<<<<< HEAD
 #include "Constants.h"
 #include <frc/Timer.h>
-=======
-
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 /**
  * An example command.
  *
@@ -26,11 +22,7 @@
 class command_DriveByDistance
     : public frc2::CommandHelper<frc2::CommandBase, command_DriveByDistance> {
  public:
-<<<<<<< HEAD
   command_DriveByDistance(subsystem_Drive *theDrive, int inches, double timeout);
-=======
-  command_DriveByDistance(subsystem_Drive *theDrive, int inches);
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 
   void Initialize() override;
 
@@ -46,9 +38,6 @@ class command_DriveByDistance
   int m_errorWindow = 2;
   int m_errorWindowTargetCount = 50;
   int m_errorWindowCount = 0;
-<<<<<<< HEAD
   double m_timeout;
   frc::Timer m_Timer;
-=======
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 };

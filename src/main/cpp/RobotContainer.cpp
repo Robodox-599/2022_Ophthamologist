@@ -7,9 +7,8 @@
 #include "RobotContainer.h"
 #include "Constants.h"
 
-<<<<<<< HEAD
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
+RobotContainer::RobotContainer()  {
   // m_chooser.SetDefaultOption("Middle Auto", &m_autonomousCommandMiddle);
   // m_chooser.AddOption("Left Auto", &m_autonomousCommandLeft);
   // m_chooser.AddOption("Right Auto", &m_autonomousCommandRight);
@@ -36,15 +35,11 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
   m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);},
   [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
   // Configure the button bindings
-=======
-RobotContainer::RobotContainer() : m_autonomousCommand() {
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
   ConfigureButtonBindings();
 }
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-<<<<<<< HEAD
   frc2::JoystickButton xboxA(&xbox, ControllerConstants::xboxA);
   frc2::JoystickButton xboxB(&xbox, ControllerConstants::xboxB);
   frc2::JoystickButton xboxX(&xbox, ControllerConstants::xboxX);
@@ -58,10 +53,7 @@ void RobotContainer::ConfigureButtonBindings() {
   xboxB.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return -0.1;}));
   xboxB.WhenReleased( command_ShooterFeedOutput(&m_shooter, [=]{return 0;})); 
 
-=======
-  frc2::JoystickButton xboxY(&xbox, ControllerConstants::xboxY);
   xboxY.WhenHeld(command_VisionTracking(&m_subsystem_Vision, &m_drive)); 
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

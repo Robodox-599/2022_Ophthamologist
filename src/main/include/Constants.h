@@ -15,17 +15,10 @@
  */
 namespace DriveConstants
 {
-<<<<<<< HEAD
     constexpr int frontLeftMotorPort = 3;
     constexpr int rearLeftMotorPort = 4;
     constexpr int frontRightMotorPort = 2;
     constexpr int rearRightMotorPort = 1;
-=======
-    constexpr int frontLeftMotorPort = 1;
-    constexpr int rearLeftMotorPort = 2;
-    constexpr int frontRightMotorPort = 4;
-    constexpr int rearRightMotorPort = 3;
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 
     constexpr int leftEncoderPort = 1;
     constexpr int rightEncoderPort = 3;
@@ -33,7 +26,6 @@ namespace DriveConstants
     constexpr int pigeonPort = 0;
 
     constexpr double skimGain = 0.8;
-<<<<<<< HEAD
     constexpr double turnGain = 0.1;
 
     constexpr double snuggleCurrent = 0.0;
@@ -65,9 +57,6 @@ namespace ShooterConstants
     constexpr double shooterkD = 0;
     constexpr double shooterFeedInPower = 0.3;
     constexpr double shooterFeedOutPower = -0.3;
-=======
-    constexpr double turnGain = 0.2;
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 }
 
 namespace ControllerConstants
@@ -92,9 +81,5 @@ namespace ControllerConstants
     constexpr int xboxMenu = 8;
     constexpr int xboxLeftJoyPress = 9;
     constexpr int xboxRightJoyPress = 10;
-<<<<<<< HEAD
-=======
-    
     constexpr int xboxRightDPad = 11;
->>>>>>> 64798c9f81b6832c9614965e53afb6ed13c9fd2c
 }
