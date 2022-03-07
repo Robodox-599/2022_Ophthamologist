@@ -32,13 +32,13 @@ RobotContainer::RobotContainer()  {
   // m_Arm.SetDefaultCommand( command_ArmByPositionUp(&m_Arm));
  // m_Arm.SetDefaultCommand( command_ArmByPositionDown(&m_Arm));
   // Initialize all of your commands and subsystems here
-  m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);},
-  [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}));
-  // m_drive.SetDefaultCommand(command_DriveByJoystick(&m_drive, [this]{return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}, 
-  // [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
+ // m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);},
+  //[this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}));
+   m_drive.SetDefaultCommand(command_DriveByJoystick(&m_drive, [this]{return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}, 
+   [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
 
  // m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRTAxis) - xbox.GetRawAxis(ControllerConstants::xboxLTAxis); }, 
-  //                                                [this] {return xbox.GetRawAxis(ControllerConstants::xboxLXAxis);}));
+  //                                                [this] {return xbox.GetRawAxis(ControllerConstants::xboxLXAxis);} ));
   // Configure the button bindings
 
   ConfigureButtonBindings();
@@ -54,22 +54,32 @@ void RobotContainer::ConfigureButtonBindings() {
   frc2::JoystickButton xboxRB(&xbox, ControllerConstants::xboxRB);
   frc2::JoystickButton xboxLB(&xbox, ControllerConstants::xboxLB);
   xboxRB.WhenPressed( command_ArmByPositionDown(&m_arm) );
-  xboxRB.WhenReleased( command_ArmByPositionUp(&m_arm) );
-  xboxA.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return 0.1;}));
+  xboxLB.WhenPressed( command_ArmByPositionUp(&m_arm) );
+  xboxA.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return ShooterConstants::shooterFeedInPower;}));
   xboxA.WhenReleased( command_ShooterFeedOutput(&m_shooter, [=]{return 0;}));
-  xboxB.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return -0.1;}));
+  xboxB.WhenPressed( command_ShooterFeedOutput(&m_shooter, [=]{return ShooterConstants::shooterFeedOutPower;}));
   xboxB.WhenReleased( command_ShooterFeedOutput(&m_shooter, [=]{return 0;})); 
   xboxY.WhenHeld(command_VisionTracking(&m_subsystem_Vision, &m_drive)); 
 
-  frc2::JoystickButton atk3WinchUnlock(&atk3, ControllerConstants::atk3WinchUnlock);
-  frc2::JoystickButton atk3WinchLock(&atk3, ControllerConstants::atk3WinchLock);
+  frc2::JoystickButton atk3SolenoidUnlock(&atk3, ControllerConstants::atk3WinchUnlock);
+  frc2::JoystickButton atk3SolenoidLock(&atk3, ControllerConstants::atk3WinchLock);
   frc2::JoystickButton atk3WinchUp(&atk3, ControllerConstants::atk3WinchUp);
   frc2::JoystickButton atk3WinchDown(&atk3, ControllerConstants::atk3WinchDown);
-  atk3WinchUp.WhileHeld(command_IncrementWinchPosition(&m_Climb));
-  atk3WinchDown.WhileHeld(command_DecrementWinchPosition(&m_Climb));
-  atk3WinchLock.WhenPressed(command_LockClimb(&m_Climb));
-  atk3WinchUnlock.WhenPressed(command_UnlockClimb(&m_Climb));
+  frc2::JoystickButton atk3WinchDownTest(&atk3, ControllerConstants::atk3WinchDownTest);
+  frc2::JoystickButton atk3WinchUpTest(&atk3, ControllerConstants::atk3WinchUpTest);
+
+  atk3WinchUp.WhileHeld(command_SetClimbByVelocity(&m_Climb, [=]{return 400;}));
+  atk3WinchUp.WhenReleased(command_SetClimbByVelocity(&m_Climb, [=]{return 0;}));
+  atk3WinchDown.WhileHeld(command_SetClimbByVelocity(&m_Climb, [=]{return -400;}));
+  atk3WinchDown.WhenReleased(command_SetClimbByVelocity(&m_Climb, [=]{return 0;}));
+  atk3SolenoidLock.WhenPressed(command_LockClimb(&m_Climb));
+  atk3SolenoidUnlock.WhenPressed(command_UnlockClimb(&m_Climb));
   
+//  atk3WinchUpTest.WhileHeld(command_IncrementWinchPosition(&m_Climb));
+//  atk3WinchDownTest.WhileHeld(command_DecrementWinchPosition(&m_Climb));
+
+ //command_SetClimbByPower
+
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

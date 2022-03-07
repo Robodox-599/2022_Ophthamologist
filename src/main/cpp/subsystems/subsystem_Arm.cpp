@@ -7,7 +7,7 @@
 subsystem_Arm::subsystem_Arm() : m_ArmMotor{ArmConstants::ArmMotorPort, rev::CANSparkMax::MotorType::kBrushless}{
     //arm motor set up 
 
-    double kP = 0.1, kI = 0, kD = 0, kIz = 0, kFF = 0, kMaxOutput = .1, kMinOutput = -.1;
+    double kP = 2, kI = 0, kD = 0, kIz = 0, kFF = 0, kMaxOutput = .1, kMinOutput = -.1;
     m_ArmPidController.SetP(kP);
     m_ArmPidController.SetI(kI);
     m_ArmPidController.SetD(kD);
@@ -17,11 +17,9 @@ subsystem_Arm::subsystem_Arm() : m_ArmMotor{ArmConstants::ArmMotorPort, rev::CAN
     m_ArmPidController.SetSmartMotionAccelStrategy(rev::CANPIDController::AccelStrategy::kTrapezoidal, 0);
     m_ArmPidController.SetSmartMotionMaxAccel(ArmConstants::ArmAcceleration);
     m_ArmPidController.SetSmartMotionMaxVelocity(ArmConstants::ArmVelocity);
-    m_ArmMotor.SetInverted(false);
-
-    
-
-
+   
+    m_ArmMotor.SetInverted(true);
+//    m_ArmEncoder.SetInverted(true);
 
     //built_different
 }

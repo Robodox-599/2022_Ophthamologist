@@ -18,6 +18,11 @@ subsystem_Drive::subsystem_Drive() :
   m_rearLeftMotor.SetInverted(false);
   m_rearRightMotor.SetInverted(true);
 
+  m_frontLeftMotor.Set(0.0);
+  m_frontRightMotor.Set(0.0);
+  m_rearLeftMotor.Set(0.0);
+  m_rearRightMotor.Set(0.0);
+
   // m_rearLeftMotor.Follow(m_frontLeftMotor);
   // m_rearRightMotor.Follow(m_frontRightMotor);
 }
@@ -60,11 +65,13 @@ double subsystem_Drive::GetCurrentOutput(){
 int subsystem_Drive::ConvertInchesToRotations(int inches)
 {
 
-  //WHEEL AND GEAR RATIO NEED TO BE FOUND OUT BEFORE THIS METHOD CAN BE USED 
-  //VALUES ARE FROM PREVIOUS YEARS CODE
-  double wheelDiameter = 4;
-  double gearRatio = 7.74;
 
+  //double wheelDiameter = 4;
+  //double gearRatio = 7.74;
+
+
+  double wheelDiameter = 6;
+  double gearRatio = 10.45;
   return ((inches)/(wheelDiameter*3.14))*gearRatio;
 }
 

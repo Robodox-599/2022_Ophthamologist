@@ -20,5 +20,5 @@ void command_SetClimbByPower::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool command_SetClimbByPower::IsFinished() {
-  return false;
+  return true;
 }

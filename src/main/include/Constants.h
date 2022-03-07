@@ -15,13 +15,13 @@
  */
 namespace DriveConstants
 {
-    constexpr int frontLeftMotorPort = 3;
-    constexpr int rearLeftMotorPort = 4;
+    constexpr int frontLeftMotorPort = 13;
+    constexpr int rearLeftMotorPort = 14;
     constexpr int frontRightMotorPort = 2;
     constexpr int rearRightMotorPort = 1;
 
-    constexpr int leftEncoderPort = 1;
-    constexpr int rightEncoderPort = 3;
+    constexpr int leftEncoderPort = 13;
+    constexpr int rightEncoderPort = 2;
 
     constexpr int pigeonPort = 0;
 
@@ -45,15 +45,15 @@ namespace ArmConstants
     constexpr double ArmAcceleration = .001;  
 
 //VALUES USED FOR COMMANDS
-    constexpr int ArmTicksUp = 100;
+    constexpr int ArmTicksUp = 30;
     constexpr int ArmTicksDown = 0;
 }
 
 namespace ShooterConstants
 {
-    constexpr int intakeMotorPort = 2;
+    constexpr int intakeMotorPort = 15;
     constexpr double shooterkF = 0;
-    constexpr double shooterkP = 0;
+    constexpr double shooterkP = 0.1;
     constexpr double shooterkD = 0;
     constexpr double shooterFeedInPower = 0.3;
     constexpr double shooterFeedOutPower = -0.3;
@@ -61,17 +61,21 @@ namespace ShooterConstants
 
 namespace ClimbConstants
 {
-    constexpr int leftWinchMotorPort = 1;
-    constexpr int rightWinchMotorPort = 2;
+    constexpr int leftWinchMotorPort = 12;
+    constexpr int rightWinchMotorPort = 3;
 
-    constexpr int leftSolenoidPort =3;
-    constexpr int rightSolenoidPort =4;
+    constexpr int SolenoidPort = 7;
     
 
-    constexpr double Climb_kF = 0;
-    constexpr double Climb_kP = 0.1;
+    constexpr double Climb_kF = 0.625;
+    constexpr double Climb_kP = 1;
     constexpr double Climb_kI = 0;
     constexpr double Climb_kD = 0;
+
+    constexpr double Climb_kP_DOWN = 2;
+    constexpr double Climb_kF_DOWN = 0.8;
+
+
 
     constexpr int ClimbVelocity = 0;
     constexpr int ClimbAcceleration = 0;  
@@ -104,8 +108,10 @@ namespace ControllerConstants
     constexpr int xboxRightJoyPress = 10;
     constexpr int xboxRightDPad = 11;
 
-    constexpr int atk3WinchLock = 6;
-    constexpr int atk3WinchUnlock = 7;
-    constexpr int atk3WinchUp = 11;
-    constexpr int atk3WinchDown = 12;
+    constexpr int atk3WinchLock = 11;
+    constexpr int atk3WinchUnlock = 10;
+    constexpr int atk3WinchUp = 6;
+    constexpr int atk3WinchDown = 7;
+    constexpr int atk3WinchUpTest = 3;
+    constexpr int atk3WinchDownTest = 2;
 }

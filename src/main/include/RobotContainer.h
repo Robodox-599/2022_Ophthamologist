@@ -40,6 +40,8 @@
 #include "commands/command_UnlockClimb.h"
 #include "commands/command_DecrementWinchPosition.h"
 #include "commands/command_IncrementWinchPosition.h"
+#include "commands/command_SetClimbByVelocity.h"
+
 
 #include "frc/XboxController.h"
 #include "frc2/command/button/JoystickButton.h"

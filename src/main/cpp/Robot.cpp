@@ -11,7 +11,7 @@ void Robot::RobotInit()
 {
   cs::UsbCamera camera0 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
   camera0.SetResolution(320, 240);
-  frc::SmartDashboard::PutNumber("Alliance: ", 0); 
+  frc::SmartDashboard::PutNumber("Alliance  (Blue - 1, Red - 2): ", 0); 
 }
 
 /**
