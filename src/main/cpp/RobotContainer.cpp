@@ -28,18 +28,22 @@ RobotContainer::RobotContainer()  {
 
 
 
-   //Initialize all of your commands and subsystems here
+  //Initialize all of your commands and subsystems here
   // m_Arm.SetDefaultCommand( command_ArmByPositionUp(&m_Arm));
- // m_Arm.SetDefaultCommand( command_ArmByPositionDown(&m_Arm));
+  // m_Arm.SetDefaultCommand( command_ArmByPositionDown(&m_Arm));
   // Initialize all of your commands and subsystems here
- // m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);},
-  //[this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}));
-   m_drive.SetDefaultCommand(command_DriveByJoystick(&m_drive, [this]{return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}, 
-   [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
+  m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);},
+  [this] {return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}));
+  // m_drive.SetDefaultCommand(command_DriveByJoystick(&m_drive, [this]{return xbox.GetRawAxis(ControllerConstants::xboxLYAxis);}, 
+  // [this] {return xbox.GetRawAxis(ControllerConstants::xboxRXAxis);}));
 
- // m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxRTAxis) - xbox.GetRawAxis(ControllerConstants::xboxLTAxis); }, 
-  //                                                [this] {return xbox.GetRawAxis(ControllerConstants::xboxLXAxis);} ));
-  // Configure the button bindings
+  //m_drive.SetDefaultCommand(command_DriveByPower(&m_drive, [this] {return xbox.GetRawAxis(ControllerConstants::xboxLXAxis);}, 
+  //                                                [this] {return xbox.GetRawAxis(ControllerConstants::xboxRTAxis) - xbox.GetRawAxis(ControllerConstants::xboxLTAxis); } ));
+  //[this] {return xbox.GetRawAxis(ControllerConstants::xboxRTAxis) - xbox.GetRawAxis(ControllerConstants::xboxLTAxis); }
+  
+  //m_shooter.SetDefaultCommand( command_ShooterFeedOutput(&m_shooter, [=]{return xbox.GetRawAxis(ControllerConstants::xboxRTAxis);}));
+  //m_shooter.SetDefaultCommand( command_ShooterFeedOutput(&m_shooter, [=]{return xbox.GetRawAxis(ControllerConstants::xboxLTAxis);}));
+
 
   ConfigureButtonBindings();
 }

@@ -202,6 +202,6 @@ void subsystem_Vision::Periodic()
   if (m_print_data)
   {
     m_print_data = false;
-    printf("Data: %s\r\n", m_proc_buffer.c_str());
+    //printf("Data: %s\r\n", m_proc_buffer.c_str());
   }
 }

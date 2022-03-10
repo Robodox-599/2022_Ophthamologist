@@ -13,10 +13,10 @@ subsystem_Drive::subsystem_Drive() :
   m_rearLeftMotor{DriveConstants::rearLeftMotorPort, rev::CANSparkMax::MotorType::kBrushless},
   m_rearRightMotor{DriveConstants::rearRightMotorPort, rev::CANSparkMax::MotorType::kBrushless}
 {
-  m_frontLeftMotor.SetInverted(false);
-  m_frontRightMotor.SetInverted(true);
-  m_rearLeftMotor.SetInverted(false);
-  m_rearRightMotor.SetInverted(true);
+  m_frontLeftMotor.SetInverted(true);
+  m_frontRightMotor.SetInverted(false);
+  m_rearLeftMotor.SetInverted(true);
+  m_rearRightMotor.SetInverted(false);
 
   m_frontLeftMotor.Set(0.0);
   m_frontRightMotor.Set(0.0);

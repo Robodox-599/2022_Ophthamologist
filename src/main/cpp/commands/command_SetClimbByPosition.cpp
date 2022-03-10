@@ -10,7 +10,7 @@ command_SetClimbByPosition::command_SetClimbByPosition(subsystem_Climb* Climb, s
 }
 
 // Called when the command is initially scheduled.
-void command_SetClimbByPosition::Initialize() {m_Climb->SetWinchMotorPosition( m_Inches() );}
+void command_SetClimbByPosition::Initialize() {m_Climb->SetWinchMotorPosition(m_Inches());}
 
 // Called repeatedly when this Command is scheduled to run
 void command_SetClimbByPosition::Execute() {}

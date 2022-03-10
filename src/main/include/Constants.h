@@ -41,12 +41,12 @@ namespace ArmConstants
     constexpr double ArmEncoderLimitPercent = 10;
 
 
-    constexpr double ArmVelocity = 20;
-    constexpr double ArmAcceleration = .001;  
+    constexpr double ArmVelocity = 320;
+    constexpr double ArmAcceleration = 320;
 
 //VALUES USED FOR COMMANDS
-    constexpr int ArmTicksUp = 30;
-    constexpr int ArmTicksDown = 0;
+    constexpr int ArmTicksUp = 0;
+    constexpr int ArmTicksDown = -30;
 }
 
 namespace ShooterConstants
@@ -55,8 +55,8 @@ namespace ShooterConstants
     constexpr double shooterkF = 0;
     constexpr double shooterkP = 0.1;
     constexpr double shooterkD = 0;
-    constexpr double shooterFeedInPower = 0.3;
-    constexpr double shooterFeedOutPower = -0.3;
+    constexpr double shooterFeedInPower = 0.55;
+    constexpr double shooterFeedOutPower = -0.55;
 }
 
 namespace ClimbConstants
