@@ -8,7 +8,7 @@
 // For more information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 cGroup_AutonomousDelayedDrive::cGroup_AutonomousDelayedDrive(subsystem_Drive* Drive, int inches, double time, double timeout){ 
-  AddCommands( command_Timer( time ), command_DriveByDistance( Drive, inches, timeout) );
+  AddCommands(command_Timer( time ), command_DriveByDistance( Drive, inches, timeout) );
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
 }

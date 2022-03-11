@@ -23,8 +23,18 @@ subsystem_Drive::subsystem_Drive() :
   m_rearLeftMotor.Set(0.0);
   m_rearRightMotor.Set(0.0);
 
+  m_leftEncoder.SetPosition(0);
+  m_rightEncoder.SetPosition(0);
   // m_rearLeftMotor.Follow(m_frontLeftMotor);
   // m_rearRightMotor.Follow(m_frontRightMotor);
+
+  int smartCurrent = 70;
+  m_frontLeftMotor.SetSmartCurrentLimit(smartCurrent, smartCurrent);
+  m_frontRightMotor.SetSmartCurrentLimit(smartCurrent, smartCurrent);
+  m_rearLeftMotor.SetSmartCurrentLimit(smartCurrent, smartCurrent);
+  m_rearRightMotor.SetSmartCurrentLimit(smartCurrent, smartCurrent);
+
+
 }
 
 void subsystem_Drive::SetPositionControl()

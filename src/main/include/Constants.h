@@ -28,7 +28,7 @@ namespace DriveConstants
     constexpr double skimGain = 0.8;
     constexpr double turnGain = 0.1;
 
-    constexpr double snuggleCurrent = 0.0;
+    constexpr double snuggleCurrent = 100;
 }
 
 namespace ArmConstants
@@ -55,8 +55,16 @@ namespace ShooterConstants
     constexpr double shooterkF = 0;
     constexpr double shooterkP = 0.1;
     constexpr double shooterkD = 0;
-    constexpr double shooterFeedInPower = 0.55;
-    constexpr double shooterFeedOutPower = -0.55;
+    constexpr double shooterFeedInPower = 0.8;
+    constexpr double shooterFeedOutPower = -1;
+
+    constexpr double Shooter_kF = 0.1;
+    constexpr double Shooter_kP = 0.1;
+    constexpr double Shooter_kI = 0;
+    constexpr double Shooter_kD = 0;
+
+  //  constexpr double ShooterVelocity = 0;
+  //  constexpr double ShooterAcceleration = .8;
 }
 
 namespace ClimbConstants
@@ -67,13 +75,13 @@ namespace ClimbConstants
     constexpr int SolenoidPort = 7;
     
 
-    constexpr double Climb_kF = 0.625;
-    constexpr double Climb_kP = 1;
+    constexpr double Climb_kF = 0.5;
+    constexpr double Climb_kP = 0.2;
     constexpr double Climb_kI = 0;
     constexpr double Climb_kD = 0;
 
-    constexpr double Climb_kP_DOWN = 2;
-    constexpr double Climb_kF_DOWN = 0.8;
+    constexpr double Climb_kF_DOWN = 0.7;
+    constexpr double Climb_kP_DOWN = 0.2;
 
 
 
@@ -108,10 +116,10 @@ namespace ControllerConstants
     constexpr int xboxRightJoyPress = 10;
     constexpr int xboxRightDPad = 11;
 
-    constexpr int atk3WinchLock = 11;
-    constexpr int atk3WinchUnlock = 10;
-    constexpr int atk3WinchUp = 6;
-    constexpr int atk3WinchDown = 7;
+    constexpr int atk3WinchLock = 6;
+    constexpr int atk3WinchUnlock = 7;
+    constexpr int atk3WinchUp = 11;
+    constexpr int atk3WinchDown = 10;
     constexpr int atk3WinchUpTest = 3;
     constexpr int atk3WinchDownTest = 2;
 }

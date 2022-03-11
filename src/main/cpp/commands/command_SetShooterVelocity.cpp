@@ -2,31 +2,24 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/command_DriveByPower.h"
+#include "commands/command_SetShooterVelocity.h"
 
-command_DriveByPower::command_DriveByPower(subsystem_Drive* Drive, std::function<double()> X, std::function<double()> Y):
-m_Drive{Drive},
-m_X{X},
-m_Y{Y} 
-{
-  AddRequirements({Drive});
+command_SetShooterVelocity::command_SetShooterVelocity(subsystem_Shooter* Shooter,  std::function<double()> velocity):
+m_Shooter{Shooter}, m_velocity{velocity} {
   // Use addRequirements() here to declare subsystem dependencies.
+  AddRequirements({Shooter});
 }
 
 // Called when the command is initially scheduled.
-void command_DriveByPower::Initialize() {
-}
+void command_SetShooterVelocity::Initialize() {m_Shooter->SetIntakeVelocity(m_velocity()); }
 
 // Called repeatedly when this Command is scheduled to run
-void command_DriveByPower::Execute() {
-  m_Drive->JoystickDrive(m_X(), m_Y());
-}
-
+void command_SetShooterVelocity::Execute() {}
 
 // Called once the command ends or is interrupted.
-void command_DriveByPower::End(bool interrupted) {}
+void command_SetShooterVelocity::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool command_DriveByPower::IsFinished() {
+bool command_SetShooterVelocity::IsFinished() {
   return false;
 }

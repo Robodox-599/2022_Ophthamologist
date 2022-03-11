@@ -77,7 +77,7 @@ class RobotContainer {
   cGroup_AutoDelayedDriveIntake m_zeroBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 40, 10.0};
 
 
-  cGroup_OneBallAuto m_oneBallAuto{&m_drive, &m_shooter, &m_arm, 0.0, 0, 5, 0.8, 10, 60};
+  cGroup_OneBallAuto m_oneBallAuto{&m_drive, &m_shooter, &m_arm, 0.0, 0, 5, 0.8, 3, -60};
   cGroup_OneBallAutoIntake m_oneBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 3.0, 50, 5, 180.0, 40};
   cGroup_OneBallAutoIntake m_MidBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 3.0, 50, 50, -110.0, 20};
 
