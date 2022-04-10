@@ -13,7 +13,6 @@ class subsystem_Shooter : public frc2::SubsystemBase {
   subsystem_Shooter();
   void SetIntakeWheelOn(double power);
   void SetIntakeWheelOff();
-
   void SetIntakeVelocity(double power);
   
   /**

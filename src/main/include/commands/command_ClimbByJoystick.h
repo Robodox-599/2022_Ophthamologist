@@ -6,8 +6,7 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "subsystems/subsystem_Arm.h"
-#include "Constants.h"
+#include "subsystems/subsystem_Climb.h"
 
 /**
  * An example command.
@@ -16,10 +15,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class command_ArmByPositionUp
-    : public frc2::CommandHelper<frc2::CommandBase, command_ArmByPositionUp> {
+class command_ClimbByJoystick
+    : public frc2::CommandHelper<frc2::CommandBase, command_ClimbByJoystick> {
  public:
-  command_ArmByPositionUp(subsystem_Arm *Arm);
+  command_ClimbByJoystick(subsystem_Climb *theClimb, std::function<double()> yAxis);
 
   void Initialize() override;
 
@@ -28,8 +27,8 @@ class command_ArmByPositionUp
   void End(bool interrupted) override;
 
   bool IsFinished() override;
-  private:
-  subsystem_Arm* m_Arm;
 
-
+private:
+  subsystem_Climb *m_subsystem_Climb;
+  std::function<double()> m_yAxis;
 };

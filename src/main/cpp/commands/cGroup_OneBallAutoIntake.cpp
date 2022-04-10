@@ -18,14 +18,14 @@ cGroup_OneBallAutoIntake::cGroup_OneBallAutoIntake(subsystem_Drive *Drive,
                             int inchesFromTarmac) {
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
-  AddCommands(command_ShooterFeedOutput(Shooter, [=]{return power;}),
+  AddCommands(command_ShooterFeedOutput(Shooter, [=]{return power;}, [=]{return true;}),
                 command_Timer(time),
-                command_ShooterFeedOutput(Shooter, [=]{return 0;}),
+                command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}),
                 command_DriveByDistance(Drive, inchesFromHub, timeout),
                 command_TurnByDegrees(Drive, degreesToBall),
                 command_ArmByPositionDown(Arm),
-                command_ShooterFeedOutput(Shooter, [=]{return power;}),
+                command_ShooterFeedOutput(Shooter, [=]{return power;}, [=]{return true;}),
                 command_DriveByDistance(Drive, inchesFromTarmac, timeout),
                 command_ArmByPositionUp(Arm),
-                command_ShooterFeedOutput(Shooter, [=]{return 0;}));
+                command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}));
 }

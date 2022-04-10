@@ -4,7 +4,7 @@
 
 #include "commands/command_ArmByPositionDown.h"
 
-command_ArmByPositionDown::command_ArmByPositionDown(subsystem_Arm* Arm): m_Arm{Arm} {
+command_ArmByPositionDown::command_ArmByPositionDown(subsystem_Arm *Arm): m_Arm{Arm} {
   AddRequirements({Arm});
 }
 
@@ -22,5 +22,5 @@ void command_ArmByPositionDown::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool command_ArmByPositionDown::IsFinished() {
-  return false;
+  return fabs(ArmConstants::ArmTicksDown - m_Arm->GetArmPosition()) < 1;
 }

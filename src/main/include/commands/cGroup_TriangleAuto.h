@@ -15,6 +15,7 @@
 #include "commands/command_DriveByDistance.h"
 #include "commands/command_TurnByDegrees.h"
 #include "commands/command_ShooterFeedOutput.h"
+#include "commands/command_ToggleArmPosition.h"
 #include "commands/command_Timer.h"
 
 class cGroup_TriangleAuto
@@ -30,9 +31,9 @@ class cGroup_TriangleAuto
                       int inchesToFirstBall,
                       double degressToSecondBall,
                       int inchesToSecondBall,
-                      double degreesToPerpLine,
-                      int inchesToPerpLine,
+                      double degreesToHubPoint,
+                      int inchesToHub,
                       double degreesToHub,
-                      int inchesToHub
+                      int inchesFromTarmac
                       );
 };

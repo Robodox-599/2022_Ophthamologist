@@ -22,5 +22,5 @@ void command_ArmByPositionUp::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool command_ArmByPositionUp::IsFinished() {
-  return false;
+  return fabs(ArmConstants::ArmTicksUp - m_Arm->GetArmPosition()) < 1;
 }

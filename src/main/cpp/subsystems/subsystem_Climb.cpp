@@ -7,11 +7,15 @@
 subsystem_Climb::subsystem_Climb() : 
 m_leftWinchMotor(ClimbConstants::leftWinchMotorPort), 
 m_rightWinchMotor(ClimbConstants::rightWinchMotorPort),  
-m_solenoid(ClimbConstants::SolenoidPort){
+m_leftSolenoid(ClimbConstants::leftSolenoidPort),
+m_rightSolenoid(ClimbConstants::rightSolenoidPort){
 
-    m_solenoid.Set(ControlMode::PercentOutput, 0.0);
-    m_solenoid.SetSensorPhase(false);
-    m_solenoid.SetInverted(false);
+    m_leftSolenoid.Set(ControlMode::PercentOutput, 0.0);
+    m_leftSolenoid.SetSensorPhase(false);
+    m_leftSolenoid.SetInverted(false);    
+    m_rightSolenoid.Set(ControlMode::PercentOutput, 0.0);
+    m_rightSolenoid.SetSensorPhase(false);
+    m_rightSolenoid.SetInverted(false);
 
 
     m_leftWinchMotor.Set(ControlMode::Velocity, 0);
@@ -19,8 +23,9 @@ m_solenoid(ClimbConstants::SolenoidPort){
     m_rightWinchMotor.SetSensorPhase(true);
     m_leftWinchMotor.SetSensorPhase(false);
     m_leftWinchMotor.SetInverted(true);
-    m_rightWinchMotor.SetInverted(true);
-    
+    m_rightWinchMotor.SetInverted(false);
+    m_leftWinchMotor.SetNeutralMode(NeutralMode::Brake);
+    m_rightWinchMotor.SetNeutralMode(NeutralMode::Brake);
 
     m_rightWinchMotor.Config_kF(0, ClimbConstants::Climb_kF, 0);
     m_rightWinchMotor.Config_kP(0, ClimbConstants::Climb_kP, 0);
@@ -67,6 +72,28 @@ void subsystem_Climb::SetWinchMotorVelocity(double velocity){
     
 }
 
+void subsystem_Climb::JoystickPowerClimb(double y)
+{
+
+
+  if (y > 0.2)
+  {
+    y = (y - 0.2) * 1 / .8;
+  }
+  else if (y < -0.2)
+  {
+    y = (y + 0.2) * 1 / .8;
+  }
+  else
+  {
+    y = 0;
+  }
+
+
+
+  SetWinchMotorPower(y);
+}
+
 void subsystem_Climb::SetWinchMotorPosition(double inches){
     m_rightWinchMotor.Set(ControlMode::Position, inches);
 }
@@ -83,11 +110,37 @@ void subsystem_Climb::DeviateWinchMotorPosition(double ticks){
 //I just guessed that this solenoid is a current to retract type beat, will need to 
 //switch nums if proven otherwise
 void subsystem_Climb::UnlockClimb(){
-    m_solenoid.Set(ControlMode::PercentOutput, 1);
+    m_leftSolenoid.Set(ControlMode::PercentOutput, 1);
+    m_rightSolenoid.Set(ControlMode::PercentOutput, 1);
+}
+void subsystem_Climb::UnlockClimb(bool isRightSolenoid){
+  if(isRightSolenoid){
+    m_rightSolenoid.Set(ControlMode::PercentOutput, 1);
+  }else{
+    m_leftSolenoid.Set(ControlMode::PercentOutput, 1);
+  }
+
 }
 
 void subsystem_Climb::LockClimb(){
-    m_solenoid.Set(ControlMode::PercentOutput, 0);
+    m_leftSolenoid.Set(ControlMode::PercentOutput, 0);
+    m_rightSolenoid.Set(ControlMode::PercentOutput, 0);
+}
+
+void subsystem_Climb::LockClimb(bool isRightWinchMotor){
+  if(isRightWinchMotor){
+    m_rightSolenoid.Set(ControlMode::PercentOutput, 0);
+  }else{
+    m_leftSolenoid.Set(ControlMode::PercentOutput, 0);
+  }
+}
+
+double subsystem_Climb::GetClimbArmCurrent(bool isRightWinchMotor){
+  if(isRightWinchMotor){
+    return m_rightWinchMotor.GetOutputCurrent();
+  }else{
+    return m_leftWinchMotor.GetOutputCurrent();
+  }
 }
 
 

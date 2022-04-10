@@ -35,7 +35,8 @@ class command_DriveByDistance
  private:
   subsystem_Drive *m_subsystem_Drive;
   int m_inches;
-  int m_errorWindow = 2;
+  int m_originalPosition;
+  int m_errorWindow = 8;
   int m_errorWindowTargetCount = 50;
   int m_errorWindowCount = 0;
   double m_timeout;

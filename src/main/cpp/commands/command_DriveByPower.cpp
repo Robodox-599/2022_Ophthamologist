@@ -15,10 +15,14 @@ m_Y{Y}
 
 // Called when the command is initially scheduled.
 void command_DriveByPower::Initialize() {
+  if(m_Y() > 0){
+    m_X = [=]{return -1 * m_X();};
+  }
 }
 
 // Called repeatedly when this Command is scheduled to run
 void command_DriveByPower::Execute() {
+
   m_Drive->JoystickDrive(m_X(), m_Y());
 }
 

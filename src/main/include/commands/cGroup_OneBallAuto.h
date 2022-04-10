@@ -27,7 +27,9 @@ class cGroup_OneBallAuto
                     subsystem_Arm* Arm,
                     double degrees,
                     int inchesToHub, 
-                    double timeout,                                           double power, 
+                    double timeout,                                           
+                    double power, 
                     double time,
+                    double timeDelay,
                     int inchesFromTarmac);
 };

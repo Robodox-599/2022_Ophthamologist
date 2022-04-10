@@ -19,28 +19,37 @@ void command_DriveByDistance::Initialize() {
   m_Timer.Reset();
   m_Timer.Start();
   m_subsystem_Drive->DriveDistance(m_inches);
+  frc::SmartDashboard::PutNumber("Initial pos", m_subsystem_Drive->getCurrentPosition());
+  m_originalPosition = m_subsystem_Drive->getCurrentPosition();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void command_DriveByDistance::Execute() {
-  if (fabs(m_subsystem_Drive->GetPIDError(m_inches)) < m_errorWindow)
+  if ( fabs(m_subsystem_Drive->GetPIDError(m_originalPosition, m_inches)) < m_errorWindow )
   {
     m_errorWindowCount++;
+
   }
   else
   {
     m_errorWindowCount = 0;
   }
+  frc::SmartDashboard::PutNumber("Error Window Count", m_errorWindowCount);
+  frc::SmartDashboard::PutNumber("Time", (double)m_Timer.Get());
+  frc::SmartDashboard::PutNumber("error", fabs(m_subsystem_Drive->GetPIDError(m_originalPosition, m_inches)));
+  
 }
 
 // Called once the command ends or is interrupted.
-void command_DriveByDistance::End(bool interrupted) {}
+void command_DriveByDistance::End(bool interrupted) {
+  frc::SmartDashboard::PutNumber("Final Pos", m_subsystem_Drive->getCurrentPosition());
+}
 
 // Returns true when the command should end.
 bool command_DriveByDistance::IsFinished() { 
-  if( (double) m_Timer.Get() > m_timeout || m_subsystem_Drive->GetCurrentOutput() >= DriveConstants::snuggleCurrent){
-    return true;
-  }else{
+   if( ( ( (double) m_Timer.Get() ) > m_timeout ) || (m_subsystem_Drive->GetCurrentOutput() >= DriveConstants::snuggleCurrent) ){
+     return true;
+   }else{
     return m_errorWindowCount > m_errorWindowTargetCount; 
   }
 }

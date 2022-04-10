@@ -4,6 +4,7 @@
 
 #pragma once
 
+
 #include <frc2/command/Command.h>
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SendableChooser.h>
@@ -16,14 +17,20 @@
 #include "subsystems/subsystem_Drive.h"
 #include "subsystems/subsystem_Arm.h"
 #include "subsystems/subsystem_Shooter.h"
+#include "subsystems/subsystem_Climb.h"
 
+#include "subsystems/subsystem_Shooter.h"
 #include "commands/cGroup_TriangleAuto.h"
-#include "commands/cGroup_ThreeBallAuto.h"
 #include "commands/cGroup_TwoBallAuto.h"
 #include "commands/cGroup_OneBallAuto.h"
 #include "commands/cGroup_OneBallAutoIntake.h"
 #include "commands/cGroup_AutonomousDelayedDrive.h"
 #include "commands/cGroup_AutoDelayedDriveIntake.h"
+
+#include "commands/command_ArmByPositionDown.h"
+#include "commands/command_ArmByPositionUp.h"
+#include "commands/command_ToggleArmPosition.h"
+
 
 
 #include "commands/command_DriveByJoystick.h"
@@ -35,18 +42,18 @@
 
 
 #include "commands/command_LockClimb.h"
-#include "commands/command_SetClimbByPosition.h"
 #include "commands/command_SetClimbByPower.h"
-#include "commands/command_UnlockClimb.h"
-#include "commands/command_DecrementWinchPosition.h"
-#include "commands/command_IncrementWinchPosition.h"
-#include "commands/command_SetClimbByVelocity.h"
-
+#include "commands/command_ClimbByJoystick.h"
+#include "commands/command_UnlockSolenoid.h"
+#include "commands/cGroup_UnlockClimb.h"
+#include "commands/command_ManualUnlockClimb.h"
+#include "commands/command_TurnByDegrees.h"
 
 #include "frc/XboxController.h"
 #include "frc2/command/button/JoystickButton.h"
 #include <frc/Joystick.h>
 #include "Constants.h"
+
 
 
 /**
@@ -72,20 +79,26 @@ class RobotContainer {
 
 
 
-  cGroup_AutonomousDelayedDrive m_zeroBallAuto{&m_drive, 40, 0, 10.0};
-  cGroup_AutonomousDelayedDrive m_delayedZeroBallAuto{&m_drive, 40, 10.0, 10.0};
-  cGroup_AutoDelayedDriveIntake m_zeroBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 40, 10.0};
+  cGroup_AutonomousDelayedDrive m_zeroBallAuto{&m_drive, -40, 0.0, 5.0};
+  cGroup_AutonomousDelayedDrive m_delayedZeroBallAuto{&m_drive, -40, 10.0, 11.0};
+  cGroup_AutoDelayedDriveIntake m_zeroBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, -72, 2.0};
 
 
-  cGroup_OneBallAuto m_oneBallAuto{&m_drive, &m_shooter, &m_arm, 0.0, 0, 5, 0.8, 3, -60};
-  cGroup_OneBallAutoIntake m_oneBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 3.0, 50, 5, 180.0, 40};
-  cGroup_OneBallAutoIntake m_MidBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, 0.8, 3.0, 50, 50, -110.0, 20};
+  cGroup_OneBallAuto m_oneBallAuto{&m_drive, &m_shooter, &m_arm, 0, 0, 3.0, -1.0, 0.5, 5.0, 80};
+  cGroup_OneBallAutoIntake m_oneBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, -1.0, 1.0, 50, 5.0, 180.0, 40};
+  cGroup_OneBallAutoIntake m_MidBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, -1.0, 1.0, 50, 50, -110.0, 20};
 
+  cGroup_TwoBallAuto m_terminalTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -41, 10, 170, -40, 0.5, 90 };
+  cGroup_TwoBallAuto m_hangarTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -41, 2, -170, -40, 0.5, 90};
+  cGroup_TwoBallAuto m_midballTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -11, 2, 180, 20, 0.5, 20};
 
+  cGroup_TriangleAuto m_triangleAuto{&m_drive, &m_shooter, &m_arm, 1.0, .5, 20, 5, 180.0, -70, 70.0, -85, 100.0, -60, -35.0, 80};  
 
-  cGroup_TwoBallAuto m_twoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, 20, 5.0, 180.0, 20, 10.0, 30, 3, 60};
-  cGroup_TwoBallAuto m_complexTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, 20, 5.0, 180.0, 20, 45.0, 10, 3, 60 };
-  cGroup_TriangleAuto m_triangleAuto{&m_drive, &m_shooter, &m_arm, 0.8, 3, 20, 5, 170.0, 40, 60.0, 40, 90.0, 20, -30.0, 20};  
+  cGroup_OneBallAuto m_DBDTest{&m_drive, &m_shooter, &m_arm, 0, -20, 10.0, 0.0, 0.0, 0.0, 20};
+  command_TurnByDegrees m_TurnByDegrees{&m_drive, -360.0};
+
+  
+  
 
   frc::SendableChooser<frc2::Command*> m_chooser;
   
@@ -94,8 +107,8 @@ class RobotContainer {
 
 
 
-  frc::XboxController xbox{ControllerConstants::xboxPort};
-  frc::Joystick atk3{ControllerConstants::joystickPort};
+  frc::XboxController xboxDriveRad{ControllerConstants::xboxPortDriveRad};
+  frc::Joystick xboxYaperator{ControllerConstants::xboxPortYaperator};
   void ConfigureButtonBindings();
 
 };

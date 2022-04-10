@@ -9,7 +9,9 @@
 
 #include "subsystems/subsystem_Drive.h"
 #include "Constants.h"
+#include <frc/Timer.h>
 
+#include "frc/Controller/PIDController.h"
 /**
  * An example command.
  *
@@ -32,4 +34,9 @@ class command_TurnByDegrees
   private:
   subsystem_Drive* m_Drive;
   double m_Degrees;
+  frc::Timer m_Timer;
+  double m_CurrentGyroAngle;
+  double m_TargetGyroAngle;
+  
+
 };

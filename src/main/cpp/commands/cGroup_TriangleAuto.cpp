@@ -16,30 +16,32 @@ cGroup_TriangleAuto::cGroup_TriangleAuto(subsystem_Drive* Drive, subsystem_Shoot
                       int inchesToFirstBall,
                       double degressToSecondBall,
                       int inchesToSecondBall,
-                      double degreesToPerpLine,
-                      int inchesToPerpLine,
+                      double degreesToHubPoint,
+                      int inchesToHub,
                       double degreesToHub,
-                      int inchesToHub) {
+                      int inchesFromTarmac) {
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
-  AddCommands(command_ShooterFeedOutput(Shooter, [=]{return intakePower;}),
+  AddCommands(command_ShooterFeedOutput(Shooter, [=]{return -1 *intakePower;}, [=]{return true;}),
               command_Timer(time),
-              command_ShooterFeedOutput(Shooter, [=]{return 0;}),
+              command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}),
               command_DriveByDistance(Drive, inchesFromHub, timeout),
+              command_ToggleArmPosition(Arm),
               command_TurnByDegrees(Drive, degreesToFirstBall),
-              command_ArmByPositionDown(Arm),
-              command_ShooterFeedOutput(Shooter, [=]{return intakePower;}),
+              command_ShooterFeedOutput(Shooter, [=]{return intakePower;}, [=]{return true;}),
               command_DriveByDistance(Drive, inchesToFirstBall, timeout),
+              command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}),
               command_TurnByDegrees(Drive, degressToSecondBall),
+              command_ShooterFeedOutput(Shooter, [=]{return intakePower;}, [=]{return true;}),
               command_DriveByDistance(Drive, inchesToSecondBall, timeout),
-              command_ArmByPositionUp(Arm),
-              command_ShooterFeedOutput(Shooter, [=]{return 0;}),
-              command_TurnByDegrees(Drive, degreesToPerpLine),
-              command_DriveByDistance(Drive, inchesToPerpLine, timeout),
-              command_TurnByDegrees(Drive, degreesToHub),
+              command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}),
+              command_ToggleArmPosition(Arm),              
+              command_TurnByDegrees(Drive, degreesToHubPoint),
               command_DriveByDistance(Drive, inchesToHub, timeout),
-              command_ShooterFeedOutput(Shooter, [=]{return intakePower;}),
+              command_TurnByDegrees(Drive, degreesToHub),
+              command_ShooterFeedOutput(Shooter, [=]{return -1 *intakePower;}, [=]{return true;}),
               command_Timer(time),
-              command_ShooterFeedOutput(Shooter, [=]{return 0;}) );
+              command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}),
+              command_DriveByDistance(Drive, inchesFromTarmac, timeout));
 
 }

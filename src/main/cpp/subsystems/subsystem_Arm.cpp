@@ -6,6 +6,7 @@
 
 subsystem_Arm::subsystem_Arm() : m_ArmMotor{ArmConstants::ArmMotorPort, rev::CANSparkMax::MotorType::kBrushless}{
     //arm motor set up 
+    m_isRaised = true;
 
     double kP = 1, kI = 0, kD = 0, kIz = 0, kFF = 0, kMaxOutput = .3, kMinOutput = -.3;
     m_ArmPidController.SetP(kP);
@@ -28,7 +29,26 @@ subsystem_Arm::subsystem_Arm() : m_ArmMotor{ArmConstants::ArmMotorPort, rev::CAN
 /*moves the position of the arm by the inputed amount of ticks. 
   0 ticks is the arm in the horizontal position              */
 void subsystem_Arm::SetArmPosition(int ticks){
+  if(ticks == ArmConstants::ArmTicksUp){
+    m_isRaised = true;
+  }else{
+    m_isRaised = false;
+  }
   m_ArmPidController.SetReference(ticks, rev::ControlType::kPosition,0);
+
+}
+
+void subsystem_Arm::toggleArmPosition(){
+  if(m_isRaised){
+    SetArmPosition(ArmConstants::ArmTicksDown);
+  }else{
+    SetArmPosition(ArmConstants::ArmTicksUp);
+  }
+
+}
+
+double subsystem_Arm::GetArmPosition(){
+  return m_ArmEncoder.GetPosition();
 }
 
 

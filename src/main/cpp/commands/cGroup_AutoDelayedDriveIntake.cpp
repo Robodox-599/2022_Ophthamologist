@@ -7,15 +7,15 @@
 // NOTE:  Consider using this command inline, rather than writing a subclass.
 // For more information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-cGroup_AutoDelayedDriveIntake::cGroup_AutoDelayedDriveIntake(subsystem_Drive* Drive, subsystem_Shooter* Shooter, subsystem_Arm* Arm, 
+cGroup_AutoDelayedDriveIntake::cGroup_AutoDelayedDriveIntake(subsystem_Drive* Drive, subsystem_Shooter* Shooter, subsystem_Arm* Arm,
                                                               double power, 
                                                               int inches,  
                                                               double timeout) {
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   AddCommands(command_ArmByPositionDown(Arm),
-              command_ShooterFeedOutput(Shooter, [=]{return power;}),
+              command_ShooterFeedOutput(Shooter, [=]{return power;}, [=]{return true;}),
               command_DriveByDistance(Drive, inches, timeout),
-              command_ArmByPositionUp(Arm),
-              command_ShooterFeedOutput(Shooter, [=]{return 0;}));
+              command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}),
+              command_ArmByPositionUp(Arm));
 }

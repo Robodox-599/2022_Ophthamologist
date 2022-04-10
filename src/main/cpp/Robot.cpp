@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
+#include "RobotContainer.h"
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
@@ -10,9 +11,12 @@
 void Robot::RobotInit() 
 {
   cs::UsbCamera camera0 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
-  camera0.SetResolution(320, 240);
+  camera0.SetBrightness(50);
+  camera0.SetResolution(160, 120);
   frc::SmartDashboard::PutNumber("Alliance  (Blue - 1, Red - 2): ", 0); 
+
 }
+
 
 /**
  * This function is called every robot packet, no matter the mode. Use
@@ -24,6 +28,8 @@ void Robot::RobotInit()
  */
 void Robot::RobotPeriodic() {
   frc2::CommandScheduler::GetInstance().Run();
+
+
 }
 
 /**
@@ -58,6 +64,8 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
+
+
   
   
 
@@ -67,6 +75,7 @@ void Robot::TeleopInit() {
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
+
 }
 
 /**
