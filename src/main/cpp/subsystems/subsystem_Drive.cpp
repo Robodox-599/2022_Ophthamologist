@@ -115,11 +115,11 @@ void subsystem_Drive::JoystickPowerDrive(double x, double y)
   double deadZone = 0.1;
   if (y > deadZone)
   {
-    y = (y - 0.2) * 1 / .8;
+    y = (y - deadZone) * 1 / .8;
   }
   else if (y < -1 * deadZone)
   {
-    y = (y + 0.2) * 1 / .8;
+    y = (y + deadZone) * 1 / .8;
   }
   else
   {
@@ -127,11 +127,11 @@ void subsystem_Drive::JoystickPowerDrive(double x, double y)
   }
   if (x > deadZone)
   {
-    x = (x - 0.2) * 1 / .8;
+    x = (x - deadZone) * 1 / .8;
   }
   else if (x < -1* deadZone)
   {
-    x = (x + 0.2) * 1 / .8;
+    x = (x + deadZone) * 1 / .8;
   }
   else
   {

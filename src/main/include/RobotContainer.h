@@ -88,11 +88,11 @@ class RobotContainer {
   cGroup_OneBallAutoIntake m_oneBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, -1.0, 1.0, 50, 5.0, 180.0, 40};
   cGroup_OneBallAutoIntake m_MidBallAutoAndIntake{&m_drive, &m_shooter, &m_arm, -1.0, 1.0, 50, 50, -110.0, 20};
 
-  cGroup_TwoBallAuto m_terminalTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -41, 10, 170, -40, 0.5, 90 };
-  cGroup_TwoBallAuto m_hangarTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -41, 2, -170, -40, 0.5, 90};
-  cGroup_TwoBallAuto m_midballTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -11, 2, 180, 20, 0.5, 20};
+  cGroup_TwoBallAuto m_terminalTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -41, 5, 170, -40, 0.5, 90 };
+  cGroup_TwoBallAuto m_hangarTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -41, 3, -170, -40, 0.5, 90};
+  cGroup_TwoBallAuto m_midballTwoBallAuto{&m_drive, &m_shooter, &m_arm, 0.8, -11, 3, 180, 20, 0.5, 20};
 
-  cGroup_TriangleAuto m_triangleAuto{&m_drive, &m_shooter, &m_arm, 1.0, .5, 20, 5, 180.0, -70, 70.0, -85, 100.0, -60, -35.0, 80};  
+  cGroup_TriangleAuto m_triangleAuto{&m_drive, &m_shooter, &m_arm, 1.0, .5, 20, 5, 150.0, -64, 86.0, -89, 120.0, -85, -17.5, 80};  
 
   cGroup_OneBallAuto m_DBDTest{&m_drive, &m_shooter, &m_arm, 0, -20, 10.0, 0.0, 0.0, 0.0, 20};
   command_TurnByDegrees m_TurnByDegrees{&m_drive, -360.0};
