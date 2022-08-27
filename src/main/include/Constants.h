@@ -19,16 +19,23 @@ namespace DriveConstants
     constexpr int rearLeftMotorPort = 14;
     constexpr int frontRightMotorPort = 2;
     constexpr int rearRightMotorPort = 1;
+    constexpr int pigeonPort = 15;
 
     constexpr int leftEncoderPort = 13;
     constexpr int rightEncoderPort = 2;
 
-    constexpr int pigeonPort = 0;
 
     constexpr double skimGain = 0.8;
-    constexpr double turnGain = 0.1;
+    constexpr double turnGain = 2;
 
-    constexpr double snuggleCurrent = 100;
+    constexpr double snuggleCurrent = 40;
+
+    constexpr double velocityRPM = 3840.0;
+    constexpr double turnPower = 0.4;
+    constexpr double turnTimeout = 15;
+
+    constexpr double closedLoopRampRate = 0.2;
+    constexpr double openLoopRampRate = 0.25;
 }
 
 namespace ArmConstants
@@ -51,7 +58,7 @@ namespace ArmConstants
 
 namespace ShooterConstants
 {
-    constexpr int intakeMotorPort = 15;
+    constexpr int intakeMotorPort = 11;
     constexpr double shooterkF = 0;
     constexpr double shooterkP = 0.1;
     constexpr double shooterkD = 0;
@@ -63,6 +70,9 @@ namespace ShooterConstants
     constexpr double Shooter_kI = 0;
     constexpr double Shooter_kD = 0;
 
+    constexpr double ClosedLoopRampRate = 0.2;
+    constexpr double OpenLoopRampRate = 0.25;
+
   //  constexpr double ShooterVelocity = 0;
   //  constexpr double ShooterAcceleration = .8;
 }
@@ -70,12 +80,13 @@ namespace ShooterConstants
 namespace ClimbConstants
 {
     constexpr int leftWinchMotorPort = 12;
-    constexpr int rightWinchMotorPort = 3;
+    constexpr int rightWinchMotorPort = 4;
 
-    constexpr int SolenoidPort = 7;
+    constexpr int leftSolenoidPort = 8;
+    constexpr int rightSolenoidPort = 7;
     
 
-    constexpr double Climb_kF = 0.5;
+    constexpr double Climb_kF = 0.7;
     constexpr double Climb_kP = 0.2;
     constexpr double Climb_kI = 0;
     constexpr double Climb_kD = 0;
@@ -83,7 +94,12 @@ namespace ClimbConstants
     constexpr double Climb_kF_DOWN = 0.7;
     constexpr double Climb_kP_DOWN = 0.2;
 
+    constexpr bool LeftWinchMotor = false;
+    constexpr bool RightWinchMotor = true;
 
+    constexpr double UnlockSolenoidTime = 1;
+
+    constexpr double currentSpike = 40;
 
     constexpr int ClimbVelocity = 0;
     constexpr int ClimbAcceleration = 0;  
@@ -93,8 +109,8 @@ namespace ClimbConstants
 
 namespace ControllerConstants
 {
-    constexpr int xboxPort = 0;
-    constexpr int joystickPort = 1;
+    constexpr int xboxPortDriveRad = 0;
+    constexpr int xboxPortYaperator = 1;
 
     constexpr int xboxLXAxis = 0;
     constexpr int xboxLYAxis = 1;
@@ -118,8 +134,9 @@ namespace ControllerConstants
 
     constexpr int atk3WinchLock = 6;
     constexpr int atk3WinchUnlock = 7;
-    constexpr int atk3WinchUp = 11;
-    constexpr int atk3WinchDown = 10;
+    constexpr int atk3WinchUp = 10;
+    constexpr int atk3WinchDown = 11;
     constexpr int atk3WinchUpTest = 3;
     constexpr int atk3WinchDownTest = 2;
+    constexpr int atk3YAxis = 1;
 }

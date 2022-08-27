@@ -13,6 +13,9 @@ subsystem_Shooter::subsystem_Shooter(): IntakeMotor{ShooterConstants::intakeMoto
     IntakeMotor.Config_kI(0, ShooterConstants::Shooter_kI, 0);
     IntakeMotor.Config_kD(0, ShooterConstants::Shooter_kD, 0);
     IntakeMotor.Set(ControlMode::Velocity, 0.0);
+
+    IntakeMotor.ConfigClosedloopRamp(ShooterConstants::ClosedLoopRampRate);
+    IntakeMotor.ConfigOpenloopRamp(ShooterConstants::OpenLoopRampRate);
     
 
    // IntakeMotor.ConfigMotionCruiseVelocity(ShooterConstants::ShooterVelocity);

@@ -14,6 +14,7 @@
 #include "commands/cGroup_OneBallAuto.h"
 #include "commands/command_ArmByPositionDown.h"
 #include "commands/command_ArmByPositionUp.h"
+#include "commands/command_ToggleArmPosition.h"
 #include "commands/command_DriveByDistance.h"
 #include "commands/command_TurnByDegrees.h"
 #include "commands/command_ShooterFeedOutput.h"
@@ -24,13 +25,11 @@ class cGroup_TwoBallAuto
                                  cGroup_TwoBallAuto> {
  public:
   cGroup_TwoBallAuto(subsystem_Drive* Drive, subsystem_Shooter* Shooter, subsystem_Arm* Arm, 
-  double intakePower, 
+  double intakePower,  
   int inchesToBall,
   double timeout,
-  double degreesToIntersection,
-  int inchesBallToIntersection,
   double degreesToHub,
-  int inchesToHub, 
+  int inchesToHub,
   double time, 
   int inchesFromTarmac
   );

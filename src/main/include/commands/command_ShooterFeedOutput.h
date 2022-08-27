@@ -18,7 +18,7 @@
 class command_ShooterFeedOutput
     : public frc2::CommandHelper<frc2::CommandBase, command_ShooterFeedOutput> {
  public:
-  command_ShooterFeedOutput(subsystem_Shooter *shooter, std::function<double()> power);
+  command_ShooterFeedOutput(subsystem_Shooter *shooter, std::function<double()> power, std::function<bool()> isAuto);
 
   void Initialize() override;
 
@@ -30,4 +30,5 @@ class command_ShooterFeedOutput
   private:
     subsystem_Shooter* m_shooter;
     std::function<double()> m_power;
+    std::function<bool()> m_isAuto;
 };

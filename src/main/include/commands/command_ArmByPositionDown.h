@@ -29,4 +29,5 @@ class command_ArmByPositionDown
   bool IsFinished() override;
   subsystem_Arm* m_Arm;
   
+  
 };

@@ -15,8 +15,12 @@ class subsystem_Climb : public frc2::SubsystemBase {
   void SetWinchMotorVelocity(double velocity);
   void SetWinchMotorPosition(double inches);
   void DeviateWinchMotorPosition(double ticks);
+  void JoystickPowerClimb(double y);
   void LockClimb();
+  void LockClimb(bool isRightWinchMotor);
+  double GetClimbArmCurrent(bool isRightWinchMotor);
   void UnlockClimb();
+  void UnlockClimb(bool isRightSolenoid);
   
 
 
@@ -30,7 +34,8 @@ class subsystem_Climb : public frc2::SubsystemBase {
   // declared private and exposed only through public methods.
   TalonSRX m_leftWinchMotor;
   TalonSRX m_rightWinchMotor;
-  VictorSPX m_solenoid;
+  VictorSPX m_leftSolenoid;
+  VictorSPX m_rightSolenoid;
   double m_position;
 
   // int m_climbArmEncoderRange;

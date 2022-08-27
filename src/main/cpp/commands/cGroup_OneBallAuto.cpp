@@ -15,13 +15,16 @@ cGroup_OneBallAuto::cGroup_OneBallAuto(subsystem_Drive *Drive,
                                         double timeout,   
                                         double power, 
                                         double time,
+                                        double timeDelay,
                                         int inchesFromTarmac) {
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
-  AddCommands(command_TurnByDegrees(Drive, degrees),
-               command_DriveByDistance(Drive, inchesToHub, timeout), 
-               command_ShooterFeedOutput(Shooter, [=]{return power;}),
+  AddCommands(
+              command_TurnByDegrees(Drive, degrees),
+               command_DriveByDistance(Drive, inchesToHub , timeout), 
+               command_ShooterFeedOutput(Shooter, [=]{return power;}, [=]{return true;}),
                command_Timer(time),
-               command_ShooterFeedOutput(Shooter, [=]{return 0;}),
+               command_ShooterFeedOutput(Shooter, [=]{return 0;}, [=]{return true;}),
+               command_Timer(timeDelay),
                command_DriveByDistance(Drive, inchesFromTarmac, timeout) );
 }

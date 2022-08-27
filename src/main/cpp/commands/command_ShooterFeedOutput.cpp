@@ -6,7 +6,7 @@
 #include "Constants.h"
 #include "Robot.h"
 
-command_ShooterFeedOutput::command_ShooterFeedOutput(subsystem_Shooter* shooter, std::function<double()> power) : m_shooter{shooter}, m_power{power}{
+command_ShooterFeedOutput::command_ShooterFeedOutput(subsystem_Shooter* shooter, std::function<double()> power, std::function<bool()> isAuto) : m_shooter{shooter}, m_power{power}, m_isAuto{isAuto}{
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements({shooter});
 }
@@ -22,5 +22,5 @@ void command_ShooterFeedOutput::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool command_ShooterFeedOutput::IsFinished() {
-  return true;
+  return m_isAuto();
 }

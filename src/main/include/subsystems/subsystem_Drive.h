@@ -11,7 +11,8 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc2/command/SubsystemBase.h>
 #include "frc/smartdashboard/SmartDashboard.h"
-#include "rev/CANSparkMax.h"
+#include <rev/CANSparkMax.h>
+#include <ctre/phoenix/sensors//WPI_PigeonIMU.h>
 #include "Constants.h"
 
 
@@ -22,13 +23,18 @@ class subsystem_Drive : public frc2::SubsystemBase {
   void JoystickVelocityDrive(double x, double y);
   void JoystickPowerDrive(double x, double y);
   void DriveDistance(int inches);
-  double GetPIDError(int inches);
+  double GetPIDError(double originalPosition, int inches);
+  double getCurrentPosition();
   double GetCurrentOutput();
   double Skim(double input);
-  void TurnByDegrees(int degrees);
+  void TurnByVelocity(double rpm);
+  double DegreesToTime(double degrees);
   void DriveByPower(double turn, double throttle);
   void JoystickDrive(double x, double y);
   void ThrottleDrive(double ltY, double rtY, double x);
+
+  double GetGyroAngle();
+  void TurnByPower(double percentOutput);
 
 
   /**
@@ -36,6 +42,7 @@ class subsystem_Drive : public frc2::SubsystemBase {
    */
   void Periodic();
   void SetPositionControl();
+  void SetVelocityControl();
   int ConvertInchesToRotations(int inches);
 
 
@@ -52,6 +59,9 @@ class subsystem_Drive : public frc2::SubsystemBase {
 
   rev::SparkMaxPIDController m_leftPidController = m_frontLeftMotor.GetPIDController();
   rev::SparkMaxPIDController m_rightPidController = m_frontRightMotor.GetPIDController();
+
+  ctre::phoenix::sensors::WPI_PigeonIMU m_Pigy;
+
 
 
   
